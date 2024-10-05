@@ -246,15 +246,13 @@ namespace Anyone4Tennis.Migrations
                     b.HasBaseType("Anyone4Tennis.Models.ApplicationUser");
 
                     b.Property<string>("Biography")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CoachId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Photo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasDiscriminator().HasValue("Coach");
                 });

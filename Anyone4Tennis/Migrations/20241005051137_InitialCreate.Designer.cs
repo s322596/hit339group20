@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Anyone4Tennis.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241002084416_InitialCreate")]
+    [Migration("20241005051137_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -249,15 +249,13 @@ namespace Anyone4Tennis.Migrations
                     b.HasBaseType("Anyone4Tennis.Models.ApplicationUser");
 
                     b.Property<string>("Biography")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CoachId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Photo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasDiscriminator().HasValue("Coach");
                 });

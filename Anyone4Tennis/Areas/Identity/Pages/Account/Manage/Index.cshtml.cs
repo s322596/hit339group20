@@ -4,9 +4,10 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
+using System.IO;
 using System.Threading.Tasks;
 using Anyone4Tennis.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -26,36 +27,16 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public string Username { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [TempData]
         public string StatusMessage { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -67,6 +48,15 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account.Manage
             [Required]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
+
+            [Display(Name = "Biography")]
+            public string Biography { get; set; }
+
+            [Display(Name = "Active")]
+            public bool Active { get; set; }
+
+            [Display(Name = "Photo")]
+            public IFormFile Photo { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
@@ -80,8 +70,19 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account.Manage
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
             };
+
+            if (user is Member member)
+            {
+                Input.Active = member.Active; // Load Active property from Member
+            }
+
+            // Load Coach-specific properties
+            if (user is Coach coach)
+            {
+                Input.Biography = coach.Biography; // Load Biography property
+            }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -121,20 +122,26 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account.Manage
                 }
             }
 
-            if (Input.FirstName != user.FirstName)
+            // Update other properties
+            user.FirstName = Input.FirstName;
+            user.LastName = Input.LastName;
+
+            // Update Coach-specific properties if user is Coach
+            if (user is Coach coach)
             {
-                user.FirstName = Input.FirstName;
+                coach.Biography = Input.Biography;
             }
 
-            if (Input.LastName != user.LastName)
+            // Update user
+            var updateResult = await _userManager.UpdateAsync(user);
+            if (!updateResult.Succeeded)
             {
-                user.LastName = Input.LastName;
+                StatusMessage = "Unexpected error when trying to update user profile.";
+                return RedirectToPage();
             }
-
-            await _userManager.UpdateAsync(user);
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Your profile has been updated.";
             return RedirectToPage();
         }
     }

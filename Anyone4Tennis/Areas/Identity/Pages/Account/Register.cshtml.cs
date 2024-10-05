@@ -136,7 +136,6 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account
                         Email = Input.Email,
                         UserName = Input.Email,
                         Biography = "Default Biography",
-                        Photo = "DefaultPhotoPath.jpg"
                     };
                 }
                 else

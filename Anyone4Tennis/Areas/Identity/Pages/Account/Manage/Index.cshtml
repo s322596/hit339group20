@@ -1,4 +1,5 @@
 ﻿@page
+@using Anyone4Tennis.Models
 @model IndexModel
 @{
     ViewData["Title"] = "Profile";
@@ -28,6 +29,29 @@
                 <label asp-for="Input.PhoneNumber" class="form-label"></label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
+
+            @if (User.IsInRole("Coach"))
+            {
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" asp-for="Input.Biography" rows="4"></textarea>
+                    <label asp-for="Input.Biography" class="form-label">Biography</label>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Photo">Upload Photo</label>
+                    <input type="file" asp-for="Input.Photo" class="form-control" />
+                    <span asp-validation-for="Input.Photo" class="text-danger"></span>
+                </div>
+            }
+
+            else if (User.IsInRole("Member"))
+            {
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Active" class="form-control" />
+                    <label asp-for="Input.Active" class="form-label">Membership Status</label>
+                </div>
+            }
+
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
         </form>
     </div>
