@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Anyone4Tennis.Models.ViewModels.CoachViewModel>
+
+@{
+    ViewData["Title"] = "Available Coaches";
+}
+
+<h1>Available Coaches</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Biography</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var coach in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Content(coach.Photo)" alt="Photo of @coach.FirstName @coach.LastName" width="100" />
+                </td>
+                <td>@coach.FirstName</td>
+                <td>@coach.LastName</td>
+                <td>@coach.Biography</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
