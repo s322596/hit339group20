@@ -39,5 +39,28 @@ namespace Anyone4Tennis.Controllers
 
             return View(coachViewModels);
         }
+
+        public async Task<IActionResult> List()
+        {
+            var members = await _context.Users
+                .OfType<Member>()
+                .ToListAsync();
+
+            var memberViewModels = new List<MemberViewModel>();
+
+            foreach (var member in members)
+            {
+                memberViewModels.Add(new MemberViewModel
+                {
+                    MemberId = member.MemberId,
+                    FirstName = member.FirstName,
+                    LastName = member.LastName,
+                    Email = member.Email,
+                    Active = member.Active,
+                });
+            }
+
+            return View(memberViewModels);
+        }
     }
 }

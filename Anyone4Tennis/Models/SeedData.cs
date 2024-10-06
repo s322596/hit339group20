@@ -114,7 +114,8 @@ namespace Anyone4Tennis.Data
                     Email = email,
                     EmailConfirmed = true,
                     FirstName = firstName,
-                    LastName = lastName
+                    LastName = lastName,
+                    Active = true
                 };
 
                 // Create the user in the database
