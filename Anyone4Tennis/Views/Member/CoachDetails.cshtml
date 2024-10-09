@@ -1,0 +1,31 @@
+﻿@model Anyone4Tennis.Models.ViewModels.CoachViewModel
+
+@{
+    ViewData["Title"] = "Coach Details";
+}
+
+<h1>@Model.FirstName @Model.LastName's Profile</h1>
+
+<div>
+    <h2>Biography</h2>
+    <p>@Model.Biography</p>
+</div>
+
+<div>
+    <h3>Profile Picture</h3>
+    @if (Model.Photo != null && Model.Photo.Length > 0)
+    {
+        <!-- Convert byte[] to Base64 string to display the image -->
+        <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Photo)"
+             alt="@Model.FirstName @Model.LastName"
+             style="max-width: 200px; height: auto;" />
+    }
+    else
+    {
+        <p>No photo available</p>
+    }
+</div>
+
+<div>
+    <a href="@Url.Action("Coaches", "Member")">Back to list</a>
+</div>
