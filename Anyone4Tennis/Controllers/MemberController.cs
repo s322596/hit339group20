@@ -34,6 +34,7 @@ namespace Anyone4Tennis.Controllers
                     FirstName = coach.FirstName,
                     LastName = coach.LastName,
                     Biography = coach.Biography,
+                    Photo = coach.Photo
                 });
             }
 
@@ -85,6 +86,29 @@ namespace Anyone4Tennis.Controllers
             // Redirect back to the list view after the update
             return RedirectToAction("List");
         }
+        public async Task<IActionResult> CoachDetails(int id)
+        {
+            var coach = await _context.Users
+                .OfType<Coach>()
+                .FirstOrDefaultAsync(c => c.CoachId == id);
+
+            if (coach == null)
+            {
+                return NotFound(); // Returns a 404 if the coach is not found
+            }
+
+            var coachViewModel = new CoachViewModel
+            {
+                CoachId = coach.CoachId,
+                FirstName = coach.FirstName,
+                LastName = coach.LastName,
+                Biography = coach.Biography,
+                Photo = coach.Photo
+            };
+
+            return View(coachViewModel); // Pass the CoachViewModel to the view
+        }
+
 
     }
 }

@@ -13,6 +13,7 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Biography</th>
+            <th>Details</th>
         </tr>
     </thead>
     <tbody>
@@ -20,13 +21,26 @@
         {
             <tr>
                 <td>
-                    <img src="@Url.Content(coach.Photo)" alt="Photo of @coach.FirstName @coach.LastName" width="100" />
+                    @if (coach.Photo != null)
+                    {
+                        <!-- Convert byte[] to Base64 string to display the image -->
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(coach.Photo)"
+                             alt="Photo of @coach.FirstName @coach.LastName"
+                             width="100" />
+                    }
+                    else
+                    {
+                        <span>No Photo</span>
+                    }
                 </td>
                 <td>@coach.FirstName</td>
                 <td>@coach.LastName</td>
                 <td>@coach.Biography</td>
+                <td>
+                    <!-- Link to the CoachDetails action with the coach's ID -->
+                    <a href="@Url.Action("CoachDetails", "Member", new { id = coach.CoachId })">View Details</a>
+                </td>
             </tr>
         }
     </tbody>
 </table>
-
