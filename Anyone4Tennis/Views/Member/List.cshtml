@@ -1,30 +1,38 @@
-﻿@model IEnumerable<Anyone4Tennis.Models.ViewModels.MemberViewModel>
+﻿@model List<Anyone4Tennis.Models.ViewModels.MemberViewModel>
 
 @{
-    ViewData["Title"] = "MemberList";
+    ViewData["Title"] = "Members List";
 }
 
-<h1>Member List</h1>
+<h2>Members List</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Active</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var member in Model)
-        {
+<form asp-action="UpdateMemberStatus" method="post">
+    <table class="table table-bordered">
+        <thead>
             <tr>
-                <td>@member.FirstName</td>
-                <td>@member.LastName</td>
-                <td>@member.Email</td>
-                <td>@(member.Active ? "Active" : "Inactive")</td>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Active</th>
+                <th>Update</th>
             </tr>
-        }
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Model[i].FirstName</td>
+                    <td>@Model[i].LastName</td>
+                    <td>@Model[i].Email</td>
+                    <td>
+                        <input type="checkbox" name="members[@i].Active" value="true" @(Model[i].Active ? "checked" : "") />
+                        <input type="hidden" name="members[@i].MemberId" value="@Model[i].MemberId" />
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

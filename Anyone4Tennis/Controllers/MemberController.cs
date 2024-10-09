@@ -62,5 +62,29 @@ namespace Anyone4Tennis.Controllers
 
             return View(memberViewModels);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateMemberStatus(List<MemberViewModel> members)
+        {
+            foreach (var memberViewModel in members)
+            {
+                var member = await _context.Users
+                    .OfType<Member>()
+                    .FirstOrDefaultAsync(m => m.MemberId == memberViewModel.MemberId);
+
+                if (member != null)
+                {
+                    // Update the Active status
+                    member.Active = memberViewModel.Active;
+                }
+            }
+
+            // Save changes to the database
+            await _context.SaveChangesAsync();
+
+            // Redirect back to the list view after the update
+            return RedirectToAction("List");
+        }
+
     }
 }
