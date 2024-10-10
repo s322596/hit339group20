@@ -43,13 +43,14 @@
                     <span asp-validation-for="Input.Photo" class="text-danger"></span>
                 </div>
             }
-
+         
             else if (User.IsInRole("Member"))
             {
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Active" class="form-control" />
-                    <label asp-for="Input.Active" class="form-label">Membership Status</label>
-                </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" readonly
+                       value="@(Model.Input.Active ? "Active" : "Inactive")" />
+                <label asp-for="Input.Active" class="form-label">Membership Status</label>
+            </div>
             }
 
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
