@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Anyone4Tennis.Models.Schedules>
+
+@{
+    ViewData["Title"] = "Booking Calendar";
+}
+<html lang="en">
+<head>
+    <title>Booking Calendar</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="calendar"></div>
+
+    <!-- Modal for creating/editing Schedules -->
+    <div id="bookingModal" style="display:none;">
+        <form id="bookingForm">
+            <input type="hidden" id="bookingId" />
+            <label>Title:</label><input type="text" id="title" /><br>
+            <label>Description:</label><textarea id="description"></textarea><br>
+            <label>Start Time:</label><input type="datetime-local" id="startTime" /><br>
+            <label>End Time:</label><input type="datetime-local" id="endTime" /><br>
+            <button type="submit">Save</button>
+            <button type="button" id="deleteBooking">Delete</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Initialize FullCalendar
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: '/Schedules/GetSchedules', // Fetch Schedules from the database
+                selectable: true,
+                dateClick: function (info) {
+                    // Show the modal for new booking
+                    $('#bookingId').val(''); // Clear the booking ID (new booking)
+                    $('#title').val('');     // Clear fields
+                    $('#description').val('');
+                    $('#startTime').val(info.dateStr); // Pre-fill start date
+                    $('#endTime').val(info.dateStr);   // Pre-fill end date
+                    $('#bookingModal').show();         // Show the modal
+                },
+                eventClick: function (info) {
+                    // Show the modal for editing an existing booking
+                    $('#bookingId').val(info.event.id);
+                    $('#title').val(info.event.title);
+                    $('#description').val(info.event.extendedProps.description);
+                    $('#startTime').val(info.event.start.toISOString().slice(0, 16));
+                    $('#endTime').val(info.event.end ? info.event.end.toISOString().slice(0, 16) : '');
+                    $('#bookingModal').show();
+                }
+            });
+            calendar.render();
+
+            // Handle create/update booking form submission
+            $('#bookingForm').submit(function (e) {
+                e.preventDefault();
+                var bookingId = $('#bookingId').val();
+                var bookingData = {
+                    BookingID: bookingId ? bookingId : 0, // 0 for new Schedules
+                    Title: $('#title').val(),
+                    Description: $('#description').val(),
+                    StartTime: $('#startTime').val(),
+                    EndTime: $('#endTime').val(),
+                };
+
+                if (!bookingId) {
+                    // Create new booking
+                    $.ajax({
+                        url: '/Schedules/CreateBooking',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(bookingData),
+                        success: function () {
+                            calendar.refetchEvents(); // Reload calendar events
+                            $('#bookingModal').hide();
+                        },
+                        error: function () {
+                            alert('Error creating booking.');
+                        }
+                    });
+                
+                }
+            });
+
+        
+        });
+    </script>
+</body>
+</html>
