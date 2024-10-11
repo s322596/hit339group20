@@ -1,10 +1,10 @@
 ﻿using Anyone4Tennis.Models; // Ensure this namespace includes your Coach and Member models
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Anyone4Tennis.Data
 {
