@@ -30,10 +30,11 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
+    var env = services.GetRequiredService<IWebHostEnvironment>(); // Get the environment
     try
     {
         // Call SeedData to seed the roles and users
-        await SeedData.Initialize(services);
+        await SeedData.Initialize(services, env);
     }
     catch (Exception ex)
     {
