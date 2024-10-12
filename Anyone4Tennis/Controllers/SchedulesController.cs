@@ -58,13 +58,13 @@ namespace Anyone4Tennis.Models
             return new JsonResult(events);
         }
 
-        // POST: /Schedules/CreateBooking
+        // POST: /Schedules/CreateSchedule
         [HttpPost]
         public async Task<IActionResult> CreateSchedule([FromBody] Schedules schedule)
         {
             if (ModelState.IsValid)
             {
-                _context.Schedules.Add(schedule);  // Add booking to the database
+                _context.Schedules.Add(schedule);  // Add schedule to the database
                 await _context.SaveChangesAsync();  // Save changes to the database
                 return Ok();  // Return success response
             }
