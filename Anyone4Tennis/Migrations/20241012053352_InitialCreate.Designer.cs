@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Anyone4Tennis.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241011154533_InitialCr")]
-    partial class InitialCr
+    [Migration("20241012053352_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -115,6 +115,10 @@ namespace Anyone4Tennis.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SchedulesID"));
 
+                    b.Property<string>("CoachId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -133,6 +137,8 @@ namespace Anyone4Tennis.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SchedulesID");
+
+                    b.HasIndex("CoachId");
 
                     b.ToTable("Schedules");
                 });
@@ -301,6 +307,17 @@ namespace Anyone4Tennis.Migrations
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Member");
+                });
+
+            modelBuilder.Entity("Anyone4Tennis.Models.Schedules", b =>
+                {
+                    b.HasOne("Anyone4Tennis.Models.ApplicationUser", "Coach")
+                        .WithMany()
+                        .HasForeignKey("CoachId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Coach");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

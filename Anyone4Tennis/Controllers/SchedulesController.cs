@@ -3,24 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Anyone4Tennis.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Anyone4Tennis.Models
 {
     public class SchedulesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public SchedulesController(ApplicationDbContext context)
+        public SchedulesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Schedules
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Schedules.ToListAsync());
+            var coaches = await _userManager.GetUsersInRoleAsync("Coach"); // Assuming "Coach" is the role name
+            ViewBag.Coaches = coaches; // Pass the list of coaches to the view
+            var schedules = await _context.Schedules.Include(s => s.Coach).ToListAsync(); // Fetch schedules
+            return View(schedules);
         }
 
         // GET: Schedules/Details/5
@@ -52,7 +59,8 @@ namespace Anyone4Tennis.Models
                 title = b.Title,
                 start = b.StartTime,
                 end = b.EndTime,
-                description = b.Description
+                description = b.Description,
+                coachId = b.CoachId // Include CoachId if needed
             }).ToListAsync();
 
             return new JsonResult(events);
@@ -64,11 +72,15 @@ namespace Anyone4Tennis.Models
         {
             if (ModelState.IsValid)
             {
-                _context.Schedules.Add(schedule);  // Add schedule to the database
-                await _context.SaveChangesAsync();  // Save changes to the database
+                // CoachId is already provided, no need to set Coach manually
+                _context.Schedules.Add(schedule);
+                await _context.SaveChangesAsync();
                 return Ok();  // Return success response
             }
+
             return BadRequest(ModelState);  // Return error response if validation fails
         }
+
+
     }
 }

@@ -1,11 +1,12 @@
 ﻿@model IEnumerable<Anyone4Tennis.Models.Schedules>
 
 @{
-    ViewData["Title"] = "schedule Calendar";
+    ViewData["Title"] = "Schedule Calendar";
+    var coaches = ViewBag.Coaches as List<Anyone4Tennis.Models.ApplicationUser>;
 }
 <html lang="en">
 <head>
-    <title>schedule Calendar</title>
+    <title>Schedule Calendar</title>
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.6.0.min.js"></script>
@@ -19,6 +20,14 @@
             <input type="hidden" id="scheduleId" />
             <label>Title:</label><input type="text" id="title" /><br>
             <label>Description:</label><textarea id="description"></textarea><br>
+            <label>Coach:</label>
+            <select id="coachId">
+                <option value="">Select a coach</option>
+                @foreach (var coach in coaches)
+                {
+                    <option value="@coach.Id">@coach.FirstName @coach.LastName</option>
+                }
+            </select><br>
             <label>Start Time:</label><input type="datetime-local" id="startTime" /><br>
             <label>End Time:</label><input type="datetime-local" id="endTime" /><br>
             <button type="submit">Save</button>
@@ -38,6 +47,7 @@
                     $('#scheduleId').val(''); // Clear the schedule ID (new schedule)
                     $('#title').val('');     // Clear fields
                     $('#description').val('');
+                    $('#coachId').val('');   // Clear coach selection
                     $('#startTime').val(info.dateStr); // Pre-fill start date
                     $('#endTime').val(info.dateStr);   // Pre-fill end date
                     $('#scheduleModal').show();         // Show the modal
@@ -47,6 +57,7 @@
                     $('#scheduleId').val(info.event.id);
                     $('#title').val(info.event.title);
                     $('#description').val(info.event.extendedProps.description);
+                    $('#coachId').val(info.event.extendedProps.coachId); // Set coach selection
                     $('#startTime').val(info.event.start.toISOString().slice(0, 16));
                     $('#endTime').val(info.event.end ? info.event.end.toISOString().slice(0, 16) : '');
                     $('#scheduleModal').show();
@@ -62,6 +73,7 @@
                     SchedulesID: scheduleId ? scheduleId : 0, // 0 for new schedules
                     Title: $('#title').val(),
                     Description: $('#description').val(),
+                    CoachId: $('#coachId').val(), // Add selected coach ID
                     StartTime: $('#startTime').val(),
                     EndTime: $('#endTime').val(),
                 };
@@ -72,13 +84,14 @@
                         url: '/Schedules/CreateSchedule',
                         type: 'POST',
                         contentType: 'application/json',
-                        data: JSON.stringify(scheduleData),
+                        data: JSON.stringify(scheduleData), // Ensure this matches your model properties
                         success: function () {
                             calendar.refetchEvents(); // Reload calendar events
-                            $('#scheduleModal').hide();
+                            $('#scheduleModal').hide(); // Hide the modal
                         },
-                        error: function () {
-                            alert('Error creating schedule.');
+                        error: function (xhr, status, error) {
+                            console.error('Error:', error); // Log the error for debugging
+                            alert('Error creating schedule: ' + xhr.responseText); // Display error message
                         }
                     });
 
