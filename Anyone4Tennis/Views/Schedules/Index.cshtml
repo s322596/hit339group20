@@ -63,8 +63,9 @@
 
                 select: function (info) {
                     resetForm();
-                    document.getElementById('startTime').value = info.startStr;
-                    document.getElementById('endTime').value = info.endStr;
+                    // Set start and end time using local date formatting
+                    document.getElementById('startTime').value = formatLocalDate(info.start);
+                    document.getElementById('endTime').value = formatLocalDate(info.end);
                 },
 
                 eventClick: function (info) {
@@ -72,8 +73,10 @@
                     document.getElementById('scheduleId').value = event.id;
                     document.getElementById('title').value = event.title;
                     document.getElementById('description').value = event.extendedProps.description;
-                    document.getElementById('startTime').value = event.start.toISOString().slice(0, 16);
-                    document.getElementById('endTime').value = event.end ? event.end.toISOString().slice(0, 16) : '';
+
+                    // Set start and end time using local date formatting
+                    document.getElementById('startTime').value = formatLocalDate(event.start);
+                    document.getElementById('endTime').value = event.end ? formatLocalDate(event.end) : '';
                     document.getElementById('coachId').value = event.extendedProps.coachId;
                 },
 
@@ -127,6 +130,16 @@
                     });
             });
         });
+
+        // Function to format date as 'YYYY-MM-DDTHH:mm' for datetime-local input
+        function formatLocalDate(date) {
+            var year = date.getFullYear();
+            var month = String(date.getMonth() + 1).padStart(2, '0');
+            var day = String(date.getDate()).padStart(2, '0');
+            var hours = String(date.getHours()).padStart(2, '0');
+            var minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
 
         // Reset the form
         function resetForm() {
