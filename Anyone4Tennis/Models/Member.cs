@@ -5,6 +5,6 @@ namespace Anyone4Tennis.Models
     public class Member : ApplicationUser
     {
         public int MemberId { get; set; }
-        public bool Active { get; set; } = true;
+        public bool Active { get; set; }
     }
 }

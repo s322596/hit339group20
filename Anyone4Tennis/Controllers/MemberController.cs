@@ -70,27 +70,27 @@ namespace Anyone4Tennis.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateMemberStatus(List<MemberViewModel> members)
+        public async Task<IActionResult> UpdateMemberStatus(int MemberId, bool Active)
         {
-            foreach (var memberViewModel in members)
+            // Find the member in the database
+            var member = await _context.Users
+                .OfType<Member>()
+                .FirstOrDefaultAsync(m => m.MemberId == MemberId);
+
+            if (member != null)
             {
-                var member = await _context.Users
-                    .OfType<Member>()
-                    .FirstOrDefaultAsync(m => m.MemberId == memberViewModel.MemberId);
+                // Update the Active status
+                member.Active = Active;
 
-                if (member != null)
-                {
-                    // Update the Active status
-                    member.Active = memberViewModel.Active;
-                }
+                // Save changes to the database
+                await _context.SaveChangesAsync();
             }
-
-            // Save changes to the database
-            await _context.SaveChangesAsync();
 
             // Redirect back to the list view after the update
             return RedirectToAction("List");
         }
+
+
 
         // Updated to reflect the new view name EmailMembers
         public async Task<IActionResult> EmailMembers()

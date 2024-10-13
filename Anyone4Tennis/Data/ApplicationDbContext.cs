@@ -12,9 +12,22 @@ namespace Anyone4Tennis.Data
         public DbSet<Member> Members { get; set; }
 
         public DbSet<Anyone4Tennis.Models.Schedules> Schedules { get; set; } = default!;
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
+
+        public async Task<int> GetNextMemberIdAsync()
+        {
+            var maxId = await Users.OfType<Member>().MaxAsync(u => (int?)u.MemberId);
+            return (maxId ?? 0) + 1; // Start from 1 if no members exist
+        }
+
+        public async Task<int> GetNextCoachIdAsync()
+        {
+            var maxId = await Users.OfType<Coach>().MaxAsync(u => (int?)u.CoachId);
+            return (maxId ?? 0) + 1; // Start from 1 if no coaches exist
         }
     }
 }

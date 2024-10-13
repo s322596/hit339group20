@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using Anyone4Tennis.Data;
 using Anyone4Tennis.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -30,13 +31,15 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ApplicationDbContext _context; // Inject ApplicationDbContext
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ApplicationDbContext context) // Add ApplicationDbContext here
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,31 +47,16 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _context = context; // Assign the injected context
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public string ReturnUrl { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public class InputModel
         {
             [Required]
@@ -100,7 +88,6 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account
             public string Role { get; set; }
         }
 
-
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
@@ -111,6 +98,7 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
                 ApplicationUser user;
@@ -118,8 +106,11 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account
                 // Create a Member or Coach based on the selected role
                 if (Input.Role == "Member")
                 {
+                    int newMemberId = await _context.GetNextMemberIdAsync(); // Get the next available MemberId
+
                     user = new Member
                     {
+                        MemberId = newMemberId, // Assign the new MemberId
                         FirstName = Input.FirstName,
                         LastName = Input.LastName,
                         Email = Input.Email,
@@ -129,8 +120,11 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account
                 }
                 else if (Input.Role == "Coach")
                 {
+                    int newCoachId = await _context.GetNextCoachIdAsync(); // Get the next available CoachId
+
                     user = new Coach
                     {
+                        CoachId = newCoachId, // Assign the new CoachId
                         FirstName = Input.FirstName,
                         LastName = Input.LastName,
                         Email = Input.Email,
@@ -192,7 +186,6 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
-
 
         private ApplicationUser CreateUser()
         {

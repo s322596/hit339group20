@@ -25,7 +25,7 @@ namespace Anyone4Tennis.Data
             // Add default users
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             await EnsureAdminExists(userManager, "admin@anyone4tennis.com", "Admin@123", "Admin", "Admin", "User");
-            await EnsureMemberExists(userManager, "member1@anyone4tennis.com", "Password123!", "Member", "Jane", "Smith", true);
+            await EnsureMemberExists(userManager, "member1@anyone4tennis.com", "Password123!", "Member", "Jane", "Smith", true, 0);
 
 
             // Add coaches
@@ -52,109 +52,109 @@ namespace Anyone4Tennis.Data
 
 
             // Add first 49 members
-            await EnsureMemberExists(userManager, "david.miller@anyone4tennis.com", "Password123!", "Member", "David", "Miller", true);
-            await EnsureMemberExists(userManager, "john.williams@anyone4tennis.com", "Password123!", "Member", "John", "Williams", true);
-            await EnsureMemberExists(userManager, "david.davis@anyone4tennis.com", "Password123!", "Member", "David", "Davis", false);
-            await EnsureMemberExists(userManager, "jessica.jones@anyone4tennis.com", "Password123!", "Member", "Jessica", "Jones", true);
-            await EnsureMemberExists(userManager, "jessica.brown@anyone4tennis.com", "Password123!", "Member", "Jessica", "Brown", false);
-            await EnsureMemberExists(userManager, "daniel.brown@anyone4tennis.com", "Password123!", "Member", "Daniel", "Brown", false);
-            await EnsureMemberExists(userManager, "daniel.johnson@anyone4tennis.com", "Password123!", "Member", "Daniel", "Johnson", false);
-            await EnsureMemberExists(userManager, "jessica.jones@anyone4tennis.com", "Password123!", "Member", "Jessica", "Jones", true);
-            await EnsureMemberExists(userManager, "robert.taylor@anyone4tennis.com", "Password123!", "Member", "Robert", "Taylor", true);
-            await EnsureMemberExists(userManager, "john.williams@anyone4tennis.com", "Password123!", "Member", "John", "Williams", false);
-            await EnsureMemberExists(userManager, "daniel.smith@anyone4tennis.com", "Password123!", "Member", "Daniel", "Smith", false);
-            await EnsureMemberExists(userManager, "jessica.jones@anyone4tennis.com", "Password123!", "Member", "Jessica", "Jones", false);
-            await EnsureMemberExists(userManager, "robert.smith@anyone4tennis.com", "Password123!", "Member", "Robert", "Smith", false);
-            await EnsureMemberExists(userManager, "emily.wilson@anyone4tennis.com", "Password123!", "Member", "Emily", "Wilson", true);
-            await EnsureMemberExists(userManager, "robert.davis@anyone4tennis.com", "Password123!", "Member", "Robert", "Davis", false);
-            await EnsureMemberExists(userManager, "john.taylor@anyone4tennis.com", "Password123!", "Member", "John", "Taylor", false);
-            await EnsureMemberExists(userManager, "jane.davis@anyone4tennis.com", "Password123!", "Member", "Jane", "Davis", false);
-            await EnsureMemberExists(userManager, "laura.smith@anyone4tennis.com", "Password123!", "Member", "Laura", "Smith", true);
-            await EnsureMemberExists(userManager, "emily.smith@anyone4tennis.com", "Password123!", "Member", "Emily", "Smith", true);
-            await EnsureMemberExists(userManager, "michael.brown@anyone4tennis.com", "Password123!", "Member", "Michael", "Brown", true);
-            await EnsureMemberExists(userManager, "laura.davis@anyone4tennis.com", "Password123!", "Member", "Laura", "Davis", true);
-            await EnsureMemberExists(userManager, "john.johnson@anyone4tennis.com", "Password123!", "Member", "John", "Johnson", true);
-            await EnsureMemberExists(userManager, "john.moore@anyone4tennis.com", "Password123!", "Member", "John", "Moore", false);
-            await EnsureMemberExists(userManager, "sarah.taylor@anyone4tennis.com", "Password123!", "Member", "Sarah", "Taylor", true);
-            await EnsureMemberExists(userManager, "robert.wilson@anyone4tennis.com", "Password123!", "Member", "Robert", "Wilson", true);
-            await EnsureMemberExists(userManager, "jane.jones@anyone4tennis.com", "Password123!", "Member", "Jane", "Jones", false);
-            await EnsureMemberExists(userManager, "jessica.taylor@anyone4tennis.com", "Password123!", "Member", "Jessica", "Taylor", false);
-            await EnsureMemberExists(userManager, "jessica.williams@anyone4tennis.com", "Password123!", "Member", "Jessica", "Williams", false);
-            await EnsureMemberExists(userManager, "john.wilson@anyone4tennis.com", "Password123!", "Member", "John", "Wilson", false);
-            await EnsureMemberExists(userManager, "david.miller@anyone4tennis.com", "Password123!", "Member", "David", "Miller", true);
-            await EnsureMemberExists(userManager, "jane.moore@anyone4tennis.com", "Password123!", "Member", "Jane", "Moore", false);
-            await EnsureMemberExists(userManager, "daniel.smith@anyone4tennis.com", "Password123!", "Member", "Daniel", "Smith", true);
-            await EnsureMemberExists(userManager, "john.brown@anyone4tennis.com", "Password123!", "Member", "John", "Brown", false);
-            await EnsureMemberExists(userManager, "john.taylor@anyone4tennis.com", "Password123!", "Member", "John", "Taylor", true);
-            await EnsureMemberExists(userManager, "emily.davis@anyone4tennis.com", "Password123!", "Member", "Emily", "Davis", false);
-            await EnsureMemberExists(userManager, "laura.brown@anyone4tennis.com", "Password123!", "Member", "Laura", "Brown", false);
-            await EnsureMemberExists(userManager, "emily.smith@anyone4tennis.com", "Password123!", "Member", "Emily", "Smith", false);
-            await EnsureMemberExists(userManager, "jessica.davis@anyone4tennis.com", "Password123!", "Member", "Jessica", "Davis", false);
-            await EnsureMemberExists(userManager, "emily.brown@anyone4tennis.com", "Password123!", "Member", "Emily", "Brown", false);
-            await EnsureMemberExists(userManager, "john.moore@anyone4tennis.com", "Password123!", "Member", "John", "Moore", false);
-            await EnsureMemberExists(userManager, "jane.moore@anyone4tennis.com", "Password123!", "Member", "Jane", "Moore", false);
-            await EnsureMemberExists(userManager, "jessica.johnson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Johnson", false);
-            await EnsureMemberExists(userManager, "jessica.davis@anyone4tennis.com", "Password123!", "Member", "Jessica", "Davis", false);
-            await EnsureMemberExists(userManager, "michael.jones@anyone4tennis.com", "Password123!", "Member", "Michael", "Jones", true);
-            await EnsureMemberExists(userManager, "sarah.davis@anyone4tennis.com", "Password123!", "Member", "Sarah", "Davis", true);
-            await EnsureMemberExists(userManager, "john.moore@anyone4tennis.com", "Password123!", "Member", "John", "Moore", true);
-            await EnsureMemberExists(userManager, "michael.miller@anyone4tennis.com", "Password123!", "Member", "Michael", "Miller", false);
-            await EnsureMemberExists(userManager, "jane.wilson@anyone4tennis.com", "Password123!", "Member", "Jane", "Wilson", true);
-            await EnsureMemberExists(userManager, "jessica.moore@anyone4tennis.com", "Password123!", "Member", "Jessica", "Moore", false);
+            await EnsureMemberExists(userManager, "david.miller@anyone4tennis.com", "Password123!", "Member", "David", "Miller", true, 1);
+            await EnsureMemberExists(userManager, "john.williams@anyone4tennis.com", "Password123!", "Member", "John", "Williams", true, 2);
+            await EnsureMemberExists(userManager, "david.davis@anyone4tennis.com", "Password123!", "Member", "David", "Davis", false, 3);
+            await EnsureMemberExists(userManager, "jessica.jones@anyone4tennis.com", "Password123!", "Member", "Jessica", "Jones", true, 4);
+            await EnsureMemberExists(userManager, "jessica.brown@anyone4tennis.com", "Password123!", "Member", "Jessica", "Brown", false, 5);
+            await EnsureMemberExists(userManager, "daniel.brown@anyone4tennis.com", "Password123!", "Member", "Daniel", "Brown", false, 6);
+            await EnsureMemberExists(userManager, "daniel.johnson@anyone4tennis.com", "Password123!", "Member", "Daniel", "Johnson", false, 6);
+            await EnsureMemberExists(userManager, "jessica.jones@anyone4tennis.com", "Password123!", "Member", "Jessica", "Jones", true, 7);
+            await EnsureMemberExists(userManager, "robert.taylor@anyone4tennis.com", "Password123!", "Member", "Robert", "Taylor", true, 8);
+            await EnsureMemberExists(userManager, "john.williams@anyone4tennis.com", "Password123!", "Member", "John", "Williams", false, 9);
+            await EnsureMemberExists(userManager, "daniel.smith@anyone4tennis.com", "Password123!", "Member", "Daniel", "Smith", false, 10);
+            await EnsureMemberExists(userManager, "jessica.jones@anyone4tennis.com", "Password123!", "Member", "Jessica", "Jones", false, 11);
+            await EnsureMemberExists(userManager, "robert.smith@anyone4tennis.com", "Password123!", "Member", "Robert", "Smith", false, 12);
+            await EnsureMemberExists(userManager, "emily.wilson@anyone4tennis.com", "Password123!", "Member", "Emily", "Wilson", true, 13);
+            await EnsureMemberExists(userManager, "robert.davis@anyone4tennis.com", "Password123!", "Member", "Robert", "Davis", false, 14);
+            await EnsureMemberExists(userManager, "john.taylor@anyone4tennis.com", "Password123!", "Member", "John", "Taylor", false, 15);
+            await EnsureMemberExists(userManager, "jane.davis@anyone4tennis.com", "Password123!", "Member", "Jane", "Davis", false, 17);
+            await EnsureMemberExists(userManager, "laura.smith@anyone4tennis.com", "Password123!", "Member", "Laura", "Smith", true, 18);
+            await EnsureMemberExists(userManager, "emily.smith@anyone4tennis.com", "Password123!", "Member", "Emily", "Smith", true, 19);
+            await EnsureMemberExists(userManager, "michael.brown@anyone4tennis.com", "Password123!", "Member", "Michael", "Brown", true, 20);
+            await EnsureMemberExists(userManager, "laura.davis@anyone4tennis.com", "Password123!", "Member", "Laura", "Davis", true, 21);
+            await EnsureMemberExists(userManager, "john.johnson@anyone4tennis.com", "Password123!", "Member", "John", "Johnson", true, 22);
+            await EnsureMemberExists(userManager, "john.moore@anyone4tennis.com", "Password123!", "Member", "John", "Moore", false, 23);
+            await EnsureMemberExists(userManager, "sarah.taylor@anyone4tennis.com", "Password123!", "Member", "Sarah", "Taylor", true, 24);
+            await EnsureMemberExists(userManager, "robert.wilson@anyone4tennis.com", "Password123!", "Member", "Robert", "Wilson", true, 25);
+            await EnsureMemberExists(userManager, "jane.jones@anyone4tennis.com", "Password123!", "Member", "Jane", "Jones", false, 26);
+            await EnsureMemberExists(userManager, "jessica.taylor@anyone4tennis.com", "Password123!", "Member", "Jessica", "Taylor", false, 27);
+            await EnsureMemberExists(userManager, "jessica.williams@anyone4tennis.com", "Password123!", "Member", "Jessica", "Williams", false, 28);
+            await EnsureMemberExists(userManager, "john.wilson@anyone4tennis.com", "Password123!", "Member", "John", "Wilson", false, 29);
+            await EnsureMemberExists(userManager, "david.miller@anyone4tennis.com", "Password123!", "Member", "David", "Miller", true, 30);
+            await EnsureMemberExists(userManager, "jane.moore@anyone4tennis.com", "Password123!", "Member", "Jane", "Moore", false, 31);
+            await EnsureMemberExists(userManager, "daniel.smith@anyone4tennis.com", "Password123!", "Member", "Daniel", "Smith", true, 32);
+            await EnsureMemberExists(userManager, "john.brown@anyone4tennis.com", "Password123!", "Member", "John", "Brown", false, 33);
+            await EnsureMemberExists(userManager, "john.taylor@anyone4tennis.com", "Password123!", "Member", "John", "Taylor", true, 34);
+            await EnsureMemberExists(userManager, "emily.davis@anyone4tennis.com", "Password123!", "Member", "Emily", "Davis", false, 35);
+            await EnsureMemberExists(userManager, "laura.brown@anyone4tennis.com", "Password123!", "Member", "Laura", "Brown", false, 36);
+            await EnsureMemberExists(userManager, "emily.smith@anyone4tennis.com", "Password123!", "Member", "Emily", "Smith", false, 37);
+            await EnsureMemberExists(userManager, "jessica.davis@anyone4tennis.com", "Password123!", "Member", "Jessica", "Davis", false, 38);
+            await EnsureMemberExists(userManager, "emily.brown@anyone4tennis.com", "Password123!", "Member", "Emily", "Brown", false, 39);
+            await EnsureMemberExists(userManager, "john.moore@anyone4tennis.com", "Password123!", "Member", "John", "Moore", false, 40);
+            await EnsureMemberExists(userManager, "jane.moore@anyone4tennis.com", "Password123!", "Member", "Jane", "Moore", false, 41);
+            await EnsureMemberExists(userManager, "jessica.johnson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Johnson", false, 42);
+            await EnsureMemberExists(userManager, "jessica.davis@anyone4tennis.com", "Password123!", "Member", "Jessica", "Davis", false, 43);
+            await EnsureMemberExists(userManager, "michael.jones@anyone4tennis.com", "Password123!", "Member", "Michael", "Jones", true, 44);
+            await EnsureMemberExists(userManager, "sarah.davis@anyone4tennis.com", "Password123!", "Member", "Sarah", "Davis", true, 45);
+            await EnsureMemberExists(userManager, "john.moore@anyone4tennis.com", "Password123!", "Member", "John", "Moore", true, 46);
+            await EnsureMemberExists(userManager, "michael.miller@anyone4tennis.com", "Password123!", "Member", "Michael", "Miller", false, 47);
+            await EnsureMemberExists(userManager, "jane.wilson@anyone4tennis.com", "Password123!", "Member", "Jane", "Wilson", true, 48);
+            await EnsureMemberExists(userManager, "jessica.moore@anyone4tennis.com", "Password123!", "Member", "Jessica", "Moore", false, 49);
 
 
             // Add last 51 members
-            await EnsureMemberExists(userManager, "jessica.smith@anyone4tennis.com", "Password123!", "Member", "Jessica", "Smith", true);
-            await EnsureMemberExists(userManager, "emily.miller@anyone4tennis.com", "Password123!", "Member", "Emily", "Miller", true);
-            await EnsureMemberExists(userManager, "daniel.jones@anyone4tennis.com", "Password123!", "Member", "Daniel", "Jones", false);
-            await EnsureMemberExists(userManager, "david.moore@anyone4tennis.com", "Password123!", "Member", "David", "Moore", false);
-            await EnsureMemberExists(userManager, "sarah.jones@anyone4tennis.com", "Password123!", "Member", "Sarah", "Jones", false);
-            await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", true);
-            await EnsureMemberExists(userManager, "david.smith@anyone4tennis.com", "Password123!", "Member", "David", "Smith", true);
-            await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", true);
-            await EnsureMemberExists(userManager, "david.smith@anyone4tennis.com", "Password123!", "Member", "David", "Smith", true);
-            await EnsureMemberExists(userManager, "michael.jones@anyone4tennis.com", "Password123!", "Member", "Michael", "Jones", true);
-            await EnsureMemberExists(userManager, "daniel.smith@anyone4tennis.com", "Password123!", "Member", "Daniel", "Smith", true);
-            await EnsureMemberExists(userManager, "jessica.davis@anyone4tennis.com", "Password123!", "Member", "Jessica", "Davis", false);
-            await EnsureMemberExists(userManager, "emily.smith@anyone4tennis.com", "Password123!", "Member", "Emily", "Smith", true);
-            await EnsureMemberExists(userManager, "david.smith@anyone4tennis.com", "Password123!", "Member", "David", "Smith", true);
-            await EnsureMemberExists(userManager, "robert.williams@anyone4tennis.com", "Password123!", "Member", "Robert", "Williams", false);
-            await EnsureMemberExists(userManager, "emily.jones@anyone4tennis.com", "Password123!", "Member", "Emily", "Jones", false);
-            await EnsureMemberExists(userManager, "laura.moore@anyone4tennis.com", "Password123!", "Member", "Laura", "Moore", false);
-            await EnsureMemberExists(userManager, "sarah.johnson@anyone4tennis.com", "Password123!", "Member", "Sarah", "Johnson", false);
-            await EnsureMemberExists(userManager, "laura.moore@anyone4tennis.com", "Password123!", "Member", "Laura", "Moore", true);
-            await EnsureMemberExists(userManager, "michael.miller@anyone4tennis.com", "Password123!", "Member", "Michael", "Miller", true);
-            await EnsureMemberExists(userManager, "sarah.brown@anyone4tennis.com", "Password123!", "Member", "Sarah", "Brown", true);
-            await EnsureMemberExists(userManager, "robert.moore@anyone4tennis.com", "Password123!", "Member", "Robert", "Moore", true);
-            await EnsureMemberExists(userManager, "laura.taylor@anyone4tennis.com", "Password123!", "Member", "Laura", "Taylor", true);
-            await EnsureMemberExists(userManager, "david.williams@anyone4tennis.com", "Password123!", "Member", "David", "Williams", false);
-            await EnsureMemberExists(userManager, "emily.smith@anyone4tennis.com", "Password123!", "Member", "Emily", "Smith", true);
-            await EnsureMemberExists(userManager, "jane.smith@anyone4tennis.com", "Password123!", "Member", "Jane", "Smith", true);
-            await EnsureMemberExists(userManager, "jane.taylor@anyone4tennis.com", "Password123!", "Member", "Jane", "Taylor", false);
-            await EnsureMemberExists(userManager, "emily.williams@anyone4tennis.com", "Password123!", "Member", "Emily", "Williams", false);
-            await EnsureMemberExists(userManager, "daniel.wilson@anyone4tennis.com", "Password123!", "Member", "Daniel", "Wilson", true);
-            await EnsureMemberExists(userManager, "michael.williams@anyone4tennis.com", "Password123!", "Member", "Michael", "Williams", true);
-            await EnsureMemberExists(userManager, "david.brown@anyone4tennis.com", "Password123!", "Member", "David", "Brown", false);
-            await EnsureMemberExists(userManager, "robert.davis@anyone4tennis.com", "Password123!", "Member", "Robert", "Davis", true);
-            await EnsureMemberExists(userManager, "jane.williams@anyone4tennis.com", "Password123!", "Member", "Jane", "Williams", false);
-            await EnsureMemberExists(userManager, "sarah.williams@anyone4tennis.com", "Password123!", "Member", "Sarah", "Williams", true);
-            await EnsureMemberExists(userManager, "jane.williams@anyone4tennis.com", "Password123!", "Member", "Jane", "Williams", true);
-            await EnsureMemberExists(userManager, "laura.wilson@anyone4tennis.com", "Password123!", "Member", "Laura", "Wilson", false);
-            await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", true);
-            await EnsureMemberExists(userManager, "laura.brown@anyone4tennis.com", "Password123!", "Member", "Laura", "Brown", true);
-            await EnsureMemberExists(userManager, "michael.johnson@anyone4tennis.com", "Password123!", "Member", "Michael", "Johnson", true);
-            await EnsureMemberExists(userManager, "sarah.moore@anyone4tennis.com", "Password123!", "Member", "Sarah", "Moore", true);
-            await EnsureMemberExists(userManager, "sarah.wilson@anyone4tennis.com", "Password123!", "Member", "Sarah", "Wilson", false);
-            await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", false);
-            await EnsureMemberExists(userManager, "daniel.brown@anyone4tennis.com", "Password123!", "Member", "Daniel", "Brown", false);
-            await EnsureMemberExists(userManager, "daniel.miller@anyone4tennis.com", "Password123!", "Member", "Daniel", "Miller", true);
-            await EnsureMemberExists(userManager, "laura.smith@anyone4tennis.com", "Password123!", "Member", "Laura", "Smith", true);
-            await EnsureMemberExists(userManager, "laura.miller@anyone4tennis.com", "Password123!", "Member", "Laura", "Miller", false);
-            await EnsureMemberExists(userManager, "daniel.johnson@anyone4tennis.com", "Password123!", "Member", "Daniel", "Johnson", true);
-            await EnsureMemberExists(userManager, "jessica.moore@anyone4tennis.com", "Password123!", "Member", "Jessica", "Moore", false);
-            await EnsureMemberExists(userManager, "robert.wilson@anyone4tennis.com", "Password123!", "Member", "Robert", "Wilson", false);
-            await EnsureMemberExists(userManager, "laura.smith@anyone4tennis.com", "Password123!", "Member", "Laura", "Smith", false);
-            await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", false);
+            await EnsureMemberExists(userManager, "jessica.smith@anyone4tennis.com", "Password123!", "Member", "Jessica", "Smith", true, 50);
+            await EnsureMemberExists(userManager, "emily.miller@anyone4tennis.com", "Password123!", "Member", "Emily", "Miller", true, 51);
+            await EnsureMemberExists(userManager, "daniel.jones@anyone4tennis.com", "Password123!", "Member", "Daniel", "Jones", false, 52);
+            await EnsureMemberExists(userManager, "david.moore@anyone4tennis.com", "Password123!", "Member", "David", "Moore", false, 53);
+            await EnsureMemberExists(userManager, "sarah.jones@anyone4tennis.com", "Password123!", "Member", "Sarah", "Jones", false, 54);
+            await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", true, 55);
+            await EnsureMemberExists(userManager, "david.smith@anyone4tennis.com", "Password123!", "Member", "David", "Smith", true, 56);
+            await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", true, 57);
+            await EnsureMemberExists(userManager, "david.smith@anyone4tennis.com", "Password123!", "Member", "David", "Smith", true, 58);
+            await EnsureMemberExists(userManager, "michael.jones@anyone4tennis.com", "Password123!", "Member", "Michael", "Jones", true, 59);
+            await EnsureMemberExists(userManager, "daniel.smith@anyone4tennis.com", "Password123!", "Member", "Daniel", "Smith", true, 60);
+            await EnsureMemberExists(userManager, "jessica.davis@anyone4tennis.com", "Password123!", "Member", "Jessica", "Davis", false, 61);
+            await EnsureMemberExists(userManager, "emily.smith@anyone4tennis.com", "Password123!", "Member", "Emily", "Smith", true, 62);
+            await EnsureMemberExists(userManager, "david.smith@anyone4tennis.com", "Password123!", "Member", "David", "Smith", true, 63);
+            await EnsureMemberExists(userManager, "robert.williams@anyone4tennis.com", "Password123!", "Member", "Robert", "Williams", false, 64);
+            await EnsureMemberExists(userManager, "emily.jones@anyone4tennis.com", "Password123!", "Member", "Emily", "Jones", false, 65);
+            await EnsureMemberExists(userManager, "laura.moore@anyone4tennis.com", "Password123!", "Member", "Laura", "Moore", false, 66);
+            await EnsureMemberExists(userManager, "sarah.johnson@anyone4tennis.com", "Password123!", "Member", "Sarah", "Johnson", false, 67);
+            await EnsureMemberExists(userManager, "laura.moore@anyone4tennis.com", "Password123!", "Member", "Laura", "Moore", true, 68);
+            await EnsureMemberExists(userManager, "michael.miller@anyone4tennis.com", "Password123!", "Member", "Michael", "Miller", true, 69);
+            await EnsureMemberExists(userManager, "sarah.brown@anyone4tennis.com", "Password123!", "Member", "Sarah", "Brown", true, 70);
+            await EnsureMemberExists(userManager, "robert.moore@anyone4tennis.com", "Password123!", "Member", "Robert", "Moore", true, 71);
+            await EnsureMemberExists(userManager, "laura.taylor@anyone4tennis.com", "Password123!", "Member", "Laura", "Taylor", true, 72);
+            await EnsureMemberExists(userManager, "david.williams@anyone4tennis.com", "Password123!", "Member", "David", "Williams", false, 73);
+            await EnsureMemberExists(userManager, "emily.smith@anyone4tennis.com", "Password123!", "Member", "Emily", "Smith", true, 74);
+            await EnsureMemberExists(userManager, "jane.smith@anyone4tennis.com", "Password123!", "Member", "Jane", "Smith", true, 75);
+            await EnsureMemberExists(userManager, "jane.taylor@anyone4tennis.com", "Password123!", "Member", "Jane", "Taylor", false, 76);
+            await EnsureMemberExists(userManager, "emily.williams@anyone4tennis.com", "Password123!", "Member", "Emily", "Williams", false, 77);
+            await EnsureMemberExists(userManager, "daniel.wilson@anyone4tennis.com", "Password123!", "Member", "Daniel", "Wilson", true, 78);
+            await EnsureMemberExists(userManager, "michael.williams@anyone4tennis.com", "Password123!", "Member", "Michael", "Williams", true, 79);
+            await EnsureMemberExists(userManager, "david.brown@anyone4tennis.com", "Password123!", "Member", "David", "Brown", false, 80);
+            await EnsureMemberExists(userManager, "robert.davis@anyone4tennis.com", "Password123!", "Member", "Robert", "Davis", true, 81);
+            await EnsureMemberExists(userManager, "jane.williams@anyone4tennis.com", "Password123!", "Member", "Jane", "Williams", false, 82);
+            await EnsureMemberExists(userManager, "sarah.williams@anyone4tennis.com", "Password123!", "Member", "Sarah", "Williams", true, 83);
+            await EnsureMemberExists(userManager, "jane.williams@anyone4tennis.com", "Password123!", "Member", "Jane", "Williams", true, 84);
+            await EnsureMemberExists(userManager, "laura.wilson@anyone4tennis.com", "Password123!", "Member", "Laura", "Wilson", false, 85);
+            await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", true, 86);
+            await EnsureMemberExists(userManager, "laura.brown@anyone4tennis.com", "Password123!", "Member", "Laura", "Brown", true, 87);
+            await EnsureMemberExists(userManager, "michael.johnson@anyone4tennis.com", "Password123!", "Member", "Michael", "Johnson", true, 88);
+            await EnsureMemberExists(userManager, "sarah.moore@anyone4tennis.com", "Password123!", "Member", "Sarah", "Moore", true, 89);
+            await EnsureMemberExists(userManager, "sarah.wilson@anyone4tennis.com", "Password123!", "Member", "Sarah", "Wilson", false, 90);
+            await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", false, 91);
+            await EnsureMemberExists(userManager, "daniel.brown@anyone4tennis.com", "Password123!", "Member", "Daniel", "Brown", false, 92);
+            await EnsureMemberExists(userManager, "daniel.miller@anyone4tennis.com", "Password123!", "Member", "Daniel", "Miller", true, 93);
+            await EnsureMemberExists(userManager, "laura.smith@anyone4tennis.com", "Password123!", "Member", "Laura", "Smith", true, 94);
+            await EnsureMemberExists(userManager, "laura.miller@anyone4tennis.com", "Password123!", "Member", "Laura", "Miller", false, 95);
+            await EnsureMemberExists(userManager, "daniel.johnson@anyone4tennis.com", "Password123!", "Member", "Daniel", "Johnson", true, 96);
+            await EnsureMemberExists(userManager, "jessica.moore@anyone4tennis.com", "Password123!", "Member", "Jessica", "Moore", false, 97);
+            await EnsureMemberExists(userManager, "robert.wilson@anyone4tennis.com", "Password123!", "Member", "Robert", "Wilson", false, 98);
+            await EnsureMemberExists(userManager, "laura.smith@anyone4tennis.com", "Password123!", "Member", "Laura", "Smith", false, 99);
+            await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", false, 100);
 
         }
 
@@ -233,7 +233,7 @@ namespace Anyone4Tennis.Data
         }
 
 
-        private static async Task EnsureMemberExists(UserManager<ApplicationUser> userManager, string email, string password, string roleName, string firstName, string lastName, bool v)
+        private static async Task EnsureMemberExists(UserManager<ApplicationUser> userManager, string email, string password, string roleName, string firstName, string lastName, bool v, int memberId)
         {
             // Check if the member user already exists
             if (await userManager.FindByEmailAsync(email) == null)
@@ -247,6 +247,7 @@ namespace Anyone4Tennis.Data
                     FirstName = firstName,
                     LastName = lastName,
                     Active = v,
+                    MemberId = memberId
                 };
 
                 // Create the user in the database
