@@ -1,4 +1,5 @@
-﻿namespace Anyone4Tennis.Models
+﻿using Anyone4Tennis.Models;
+namespace Anyone4Tennis.Models
 {
     public class Schedules
     {
@@ -8,5 +9,11 @@
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public bool IsFullDay { get; set; }
+
+        // Foreign Key for Coach (string to match IdentityUser's primary key)
+        public string CoachId { get; set; }
+
+        // Navigation Property for Coach
+        public virtual Coach Coach { get; set; }
     }
 }
