@@ -29,25 +29,25 @@ namespace Anyone4Tennis.Data
 
 
             // Add coaches
-            await EnsureCoachExists(userManager, "jane.johnson@anyone4tennis.com", "Password123!", "Coach", "Jane", "Johnson", "/images/coaches/alex.jpg", env.WebRootPath);
+            await EnsureCoachExists(userManager, "jane.johnson1@anyone4tennis.com", "Password123!", "Coach", "Jane", "Johnson", "/images/coaches/alex.jpg", env.WebRootPath);
             await EnsureCoachExists(userManager, "emily.smith@anyone4tennis.com", "Password123!", "Coach", "Emily", "Smith", "/images/coaches/bowser.jpg", env.WebRootPath);
-            await EnsureCoachExists(userManager, "emily.wilson@anyone4tennis.com", "Password123!", "Coach", "Emily", "Wilson", "/images/coaches/DK.jpg", env.WebRootPath);
+            await EnsureCoachExists(userManager, "emily.wilson1@anyone4tennis.com", "Password123!", "Coach", "Emily", "Wilson", "/images/coaches/DK.jpg", env.WebRootPath);
             await EnsureCoachExists(userManager, "emily.williams@anyone4tennis.com", "Password123!", "Coach", "Emily", "Williams", "/images/coaches/falco.jpg", env.WebRootPath);
             await EnsureCoachExists(userManager, "michael.smith@anyone4tennis.com", "Password123!", "Coach", "Michael", "Smith", "/images/coaches/falcon.jpg", env.WebRootPath);
             await EnsureCoachExists(userManager, "laura.miller@anyone4tennis.com", "Password123!", "Coach", "Laura", "Miller", "/images/coaches/fox.jpg", env.WebRootPath);
-            await EnsureCoachExists(userManager, "emily.wilson@anyone4tennis.com", "Password123!", "Coach", "Emily", "Wilson", "/images/coaches/Jigglypuff.png", env.WebRootPath);
+            await EnsureCoachExists(userManager, "emily.wilson2@anyone4tennis.com", "Password123!", "Coach", "Emily", "Wilson", "/images/coaches/Jigglypuff.png", env.WebRootPath);
             await EnsureCoachExists(userManager, "daniel.johnson@anyone4tennis.com", "Password123!", "Coach", "Daniel", "Johnson", "/images/coaches/kirby.jpg", env.WebRootPath);
-            await EnsureCoachExists(userManager, "daniel.williams@anyone4tennis.com", "Password123!", "Coach", "Daniel", "Williams", "/images/coaches/link.jpg", env.WebRootPath);
+            await EnsureCoachExists(userManager, "daniel.williams1@anyone4tennis.com", "Password123!", "Coach", "Daniel", "Williams", "/images/coaches/link.jpg", env.WebRootPath);
             await EnsureCoachExists(userManager, "jane.davis@anyone4tennis.com", "Password123!", "Coach", "Jane", "Davis", "/images/coaches/lucina.jpg", env.WebRootPath);
             await EnsureCoachExists(userManager, "robert.jones@anyone4tennis.com", "Password123!", "Coach", "Robert", "Jones", "/images/coaches/luigi.jpg", env.WebRootPath);
             await EnsureCoachExists(userManager, "david.miller@anyone4tennis.com", "Password123!", "Coach", "David", "Miller", "/images/coaches/mario.jpg", env.WebRootPath);
-            await EnsureCoachExists(userManager, "jessica.williams@anyone4tennis.com", "Password123!", "Coach", "Jessica", "Williams", "/images/coaches/mew2.jpg", env.WebRootPath);
-            await EnsureCoachExists(userManager, "jane.johnson@anyone4tennis.com", "Password123!", "Coach", "Jane", "Johnson", "/images/coaches/peach.png", env.WebRootPath);
+            await EnsureCoachExists(userManager, "jessica.williams1@anyone4tennis.com", "Password123!", "Coach", "Jessica", "Williams", "/images/coaches/mew2.jpg", env.WebRootPath);
+            await EnsureCoachExists(userManager, "jane.johnson2@anyone4tennis.com", "Password123!", "Coach", "Jane", "Johnson", "/images/coaches/peach.png", env.WebRootPath);
             await EnsureCoachExists(userManager, "laura.wilson@anyone4tennis.com", "Password123!", "Coach", "Laura", "Wilson", "/images/coaches/pikachu.jpg", env.WebRootPath);
-            await EnsureCoachExists(userManager, "daniel.williams@anyone4tennis.com", "Password123!", "Coach", "Daniel", "Williams", "/images/coaches/pichu.jpg", env.WebRootPath);
+            await EnsureCoachExists(userManager, "daniel.williams2@anyone4tennis.com", "Password123!", "Coach", "Daniel", "Williams", "/images/coaches/pichu.jpg", env.WebRootPath);
             await EnsureCoachExists(userManager, "sarah.miller@anyone4tennis.com", "Password123!", "Coach", "Sarah", "Miller", "/images/coaches/charmander.png", env.WebRootPath);
             await EnsureCoachExists(userManager, "sarah.johnson@anyone4tennis.com", "Password123!", "Coach", "Sarah", "Johnson", "/images/coaches/steve.png", env.WebRootPath);
-            await EnsureCoachExists(userManager, "jessica.williams@anyone4tennis.com", "Password123!", "Coach", "Jessica", "Williams", "/images/coaches/yoshi.png", env.WebRootPath);
+            await EnsureCoachExists(userManager, "jessica.williams2@anyone4tennis.com", "Password123!", "Coach", "Jessica", "Williams", "/images/coaches/yoshi.png", env.WebRootPath);
             await EnsureCoachExists(userManager, "sarah.williams@anyone4tennis.com", "Password123!", "Coach", "Sarah", "Williams", "/images/coaches/zelda.jpg", env.WebRootPath);
 
 

@@ -23,29 +23,6 @@ namespace Anyone4Tennis.Controllers
             _emailSender = emailSender;
         }
 
-        public async Task<IActionResult> Coaches()
-        {
-            var coaches = await _context.Users
-                .OfType<Coach>()
-                .ToListAsync();
-
-            var coachViewModels = new List<CoachViewModel>();
-
-            foreach (var coach in coaches)
-            {
-                coachViewModels.Add(new CoachViewModel
-                {
-                    CoachId = coach.CoachId,
-                    FirstName = coach.FirstName,
-                    LastName = coach.LastName,
-                    Biography = coach.Biography,
-                    Photo = coach.Photo
-                });
-            }
-
-            return View(coachViewModels);
-        }
-
         public async Task<IActionResult> List()
         {
             var members = await _context.Users
@@ -67,29 +44,6 @@ namespace Anyone4Tennis.Controllers
             }
 
             return View(memberViewModels);
-        }
-
-        public async Task<IActionResult> Details(int coachid)
-        {
-            var coach = await _context.Users
-                .OfType<Coach>()
-                .FirstOrDefaultAsync(c => c.CoachId == coachid);
-
-            if (coach == null)
-            {
-                return NotFound();
-            }
-
-            var coachViewModel = new CoachViewModel
-            {
-                CoachId = coach.CoachId,
-                FirstName = coach.FirstName,
-                LastName = coach.LastName,
-                Biography = coach.Biography,
-                Photo = coach.Photo
-            };
-
-            return View(coachViewModel);
         }
 
 
