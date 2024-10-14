@@ -45,11 +45,11 @@ namespace Anyone4Tennis.Controllers
 
             return View(coachViewModels);
         }
-        public async Task<IActionResult> Details(int coachid)
+        public async Task<IActionResult> Details(int id)
         {
             var coach = await _context.Users
                 .OfType<Coach>()
-                .FirstOrDefaultAsync(c => c.CoachId == coachid);
+                .FirstOrDefaultAsync(c => c.CoachId == id);
 
             if (coach == null)
             {
