@@ -69,6 +69,30 @@ namespace Anyone4Tennis.Controllers
             return View(memberViewModels);
         }
 
+        public async Task<IActionResult> Details(int coachid)
+        {
+            var coach = await _context.Users
+                .OfType<Coach>()
+                .FirstOrDefaultAsync(c => c.CoachId == coachid);
+
+            if (coach == null)
+            {
+                return NotFound();
+            }
+
+            var coachViewModel = new CoachViewModel
+            {
+                CoachId = coach.CoachId,
+                FirstName = coach.FirstName,
+                LastName = coach.LastName,
+                Biography = coach.Biography,
+                Photo = coach.Photo
+            };
+
+            return View(coachViewModel);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> UpdateMemberStatus(int MemberId, bool Active)
         {
@@ -130,29 +154,6 @@ namespace Anyone4Tennis.Controllers
 
             ViewBag.Status = "Emails sent successfully!";
             return View();
-        }
-
-        public async Task<IActionResult> CoachDetails(int id)
-        {
-            var coach = await _context.Users
-                .OfType<Coach>()
-                .FirstOrDefaultAsync(c => c.CoachId == id);
-
-            if (coach == null)
-            {
-                return NotFound(); // Returns a 404 if the coach is not found
-            }
-
-            var coachViewModel = new CoachViewModel
-            {
-                CoachId = coach.CoachId,
-                FirstName = coach.FirstName,
-                LastName = coach.LastName,
-                Biography = coach.Biography,
-                Photo = coach.Photo
-            };
-
-            return View(coachViewModel); // Pass the CoachViewModel to the view
         }
     }
 }

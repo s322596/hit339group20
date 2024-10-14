@@ -1,10 +1,4 @@
-﻿@model List<Anyone4Tennis.Models.ViewModels.MemberViewModel>
-
-@{
-    ViewData["Title"] = "Members List";
-}
-
-<h2>Members List</h2>
+﻿@model IEnumerable<Anyone4Tennis.Models.ViewModels.MemberViewModel>
 
 <table class="table">
     <thead>
@@ -23,16 +17,14 @@
                 <td>@member.FirstName</td>
                 <td>@member.LastName</td>
                 <td>@member.Email</td>
-                <td>
-                    <!-- Checkbox to show the current active status -->
-                    <input type="checkbox" name="Active" value="true" @(member.Active ? "checked" : "") />
-                </td>
+                <td>@member.Active</td>
                 <td>
                     <form asp-action="UpdateMemberStatus" method="post">
-                        <!-- Hidden field for MemberId -->
                         <input type="hidden" name="MemberId" value="@member.MemberId" />
-                        <!-- Checkbox for the form submission -->
-                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                        <input type="hidden" name="Active" value="@(member.Active ? "false" : "true")" />
+                        <button type="submit" class="btn btn-primary">
+                            @(member.Active ? "Deactivate" : "Activate")
+                        </button>
                     </form>
                 </td>
             </tr>
