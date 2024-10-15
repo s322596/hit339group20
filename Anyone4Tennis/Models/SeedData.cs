@@ -25,8 +25,6 @@ namespace Anyone4Tennis.Data
             // Add default users
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             await EnsureAdminExists(userManager, "admin@anyone4tennis.com", "Admin@123", "Admin", "Admin", "User");
-            await EnsureMemberExists(userManager, "member1@anyone4tennis.com", "Password123!", "Member", "Jane", "Smith", true, 0);
-
 
             // Add coaches
             await EnsureCoachExists(userManager, "jane.johnson1@anyone4tennis.com", "Password123!", "Coach", "Jane", "Johnson", "/images/coaches/alex.jpg", env.WebRootPath, 1);

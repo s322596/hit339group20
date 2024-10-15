@@ -23,7 +23,7 @@ namespace Anyone4Tennis.Controllers
             _emailSender = emailSender;
         }
 
-        public async Task<IActionResult> Coaches()
+        public async Task<IActionResult> List()
         {
             var coaches = await _context.Users
                 .OfType<Coach>()

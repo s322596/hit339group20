@@ -9,8 +9,6 @@ namespace Anyone4Tennis.Models
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public bool IsFullDay { get; set; }
-
-        // Foreign Key for Coach (string to match IdentityUser's primary key)
         public string CoachId { get; set; }
 
         // Navigation Property for Coach
