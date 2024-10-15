@@ -14,6 +14,7 @@ public class SchedulesController : Controller
         _context = context;
     }
 
+
     // GET: Schedules
     public async Task<IActionResult> Index()
     {
