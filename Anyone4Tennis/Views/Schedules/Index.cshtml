@@ -21,8 +21,8 @@
         </div>
 
         <div>
-            <label for="description">Description:</label>
-            <textarea id="description" required></textarea>
+            <label for="location">Location:</label>
+            <textarea id="location" required></textarea>
         </div>
 
         <div>
@@ -72,7 +72,7 @@
                     var event = info.event;
                     document.getElementById('scheduleId').value = event.id;
                     document.getElementById('title').value = event.title;
-                    document.getElementById('description').value = event.extendedProps.description;
+                    document.getElementById('location').value = event.extendedProps.location;
 
                     // Set start and end time using local date formatting
                     document.getElementById('startTime').value = formatLocalDate(event.start);
@@ -107,7 +107,7 @@
                 var schedule = {
                     SchedulesID: scheduleId ? parseInt(scheduleId) : 0,
                     Title: document.getElementById('title').value,
-                    Description: document.getElementById('description').value,
+                    Location: document.getElementById('location').value,
                     StartTime: document.getElementById('startTime').value,
                     EndTime: document.getElementById('endTime').value,
                     CoachId: document.getElementById('coachId').value

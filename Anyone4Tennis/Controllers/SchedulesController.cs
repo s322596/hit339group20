@@ -1,6 +1,7 @@
 ﻿using Anyone4Tennis.Data;
 using Anyone4Tennis.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;  // Add this for logging
 
@@ -32,7 +33,7 @@ public class SchedulesController : Controller
                 title = b.Title + " - " + b.Coach.FirstName + " " + b.Coach.LastName,  // Show Coach name with title
                 start = b.StartTime,
                 end = b.EndTime,
-                description = b.Description,
+                Location = b.Location,
                 coachId = b.CoachId,
                 coachName = b.Coach.FirstName + " " + b.Coach.LastName
             }).ToListAsync();

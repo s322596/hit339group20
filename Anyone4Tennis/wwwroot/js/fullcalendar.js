@@ -18,7 +18,7 @@
             // Open modal to create a new schedule
             document.getElementById('scheduleId').value = '';
             document.getElementById('title').value = '';
-            document.getElementById('description').value = '';
+            document.getElementById('location').value = '';
 
             // Format the start and end time for datetime-local input
             document.getElementById('startTime').value = formatLocalDate(new Date(info.start));
@@ -33,7 +33,7 @@
 
             document.getElementById('scheduleId').value = event.id;
             document.getElementById('title').value = event.title;
-            document.getElementById('description').value = event.extendedProps.description;
+            document.getElementById('location').value = event.extendedProps.location;
 
             // Format the start and end time for datetime-local input
             document.getElementById('startTime').value = formatLocalDate(new Date(event.start));
