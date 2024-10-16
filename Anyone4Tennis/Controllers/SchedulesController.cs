@@ -31,10 +31,16 @@ public class SchedulesController : Controller
             .Select(b => new
             {
                 id = b.SchedulesID,
-                title = b.Title + " - " + b.Coach.FirstName + " " + b.Coach.LastName,  // Show Coach name with title
+                title = string.Format("{0} - {1} - {2:t} - {3:t} - {4} {5}",
+                                      b.Title,
+                                      b.Location,
+                                      b.StartTime,
+                                      b.EndTime,
+                                      b.Coach.FirstName,
+                                      b.Coach.LastName), 
                 start = b.StartTime,
                 end = b.EndTime,
-                Location = b.Location,
+                location = b.Location,
                 coachId = b.CoachId,
                 coachName = b.Coach.FirstName + " " + b.Coach.LastName
             }).ToListAsync();
@@ -46,9 +52,9 @@ public class SchedulesController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateSchedule([FromBody] Schedules schedule)
     {
-            _context.Schedules.Add(schedule);
-            await _context.SaveChangesAsync();
-            return Ok();
+        _context.Schedules.Add(schedule);
+        await _context.SaveChangesAsync();
+        return Ok();
     }
 
     // API to fetch coaches for the dropdown
@@ -64,5 +70,10 @@ public class SchedulesController : Controller
             }).ToListAsync();
 
         return new JsonResult(coaches);
+    }
+
+    public async Task<IActionResult> ScheduleList()
+    {
+        return View(await _context.Schedules.ToListAsync());
     }
 }
