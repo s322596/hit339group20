@@ -104,6 +104,29 @@ namespace Anyone4Tennis.Migrations
                     b.UseTphMappingStrategy();
                 });
 
+            modelBuilder.Entity("Anyone4Tennis.Models.MemberSchedule", b =>
+                {
+                    b.Property<int>("MemberScheduleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberScheduleId"));
+
+                    b.Property<string>("MemberFK")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ScheduleID")
+                        .HasColumnType("int");
+
+                    b.HasKey("MemberScheduleId");
+
+                    b.HasIndex("MemberFK");
+
+                    b.HasIndex("ScheduleID");
+
+                    b.ToTable("MemberSchedules");
+                });
+
             modelBuilder.Entity("Anyone4Tennis.Models.Schedules", b =>
                 {
                     b.Property<int>("SchedulesID")
@@ -304,6 +327,23 @@ namespace Anyone4Tennis.Migrations
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Member");
+                });
+
+            modelBuilder.Entity("Anyone4Tennis.Models.MemberSchedule", b =>
+                {
+                    b.HasOne("Anyone4Tennis.Models.Member", "Member")
+                        .WithMany()
+                        .HasForeignKey("MemberFK");
+
+                    b.HasOne("Anyone4Tennis.Models.Schedules", "Schedules")
+                        .WithMany()
+                        .HasForeignKey("ScheduleID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Member");
+
+                    b.Navigation("Schedules");
                 });
 
             modelBuilder.Entity("Anyone4Tennis.Models.Schedules", b =>

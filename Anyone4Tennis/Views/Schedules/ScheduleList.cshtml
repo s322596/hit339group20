@@ -24,6 +24,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.CoachId)
             </th>
+            <th>
+                action
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -45,6 +48,13 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CoachId)
+                </td>
+                <td>
+                    <form asp-action="Enroll" asp-controller="Schedules" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="scheduleId" value="@item.SchedulesID" />
+                        <button type="submit" class="btn btn-primary">Enroll</button>
+                    </form>
                 </td>
                 <td>
                 </td>

@@ -13,6 +13,8 @@ namespace Anyone4Tennis.Data
 
         public DbSet<Anyone4Tennis.Models.Schedules> Schedules { get; set; } = default!;
 
+        public DbSet<MemberSchedule> MemberSchedules { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

@@ -1,9 +1,11 @@
 ﻿using Anyone4Tennis.Data;
 using Anyone4Tennis.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;  // Add this for logging
+using System.Security.Claims;
 
 public class SchedulesController : Controller
 {
@@ -37,7 +39,7 @@ public class SchedulesController : Controller
                                       b.StartTime,
                                       b.EndTime,
                                       b.Coach.FirstName,
-                                      b.Coach.LastName), 
+                                      b.Coach.LastName),
                 start = b.StartTime,
                 end = b.EndTime,
                 location = b.Location,
@@ -75,5 +77,39 @@ public class SchedulesController : Controller
     public async Task<IActionResult> ScheduleList()
     {
         return View(await _context.Schedules.ToListAsync());
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> Enroll(int scheduleId)
+    {
+        var memberId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var member = await _context.Users.FindAsync(memberId);
+        var schedule = await _context.Schedules.FindAsync(scheduleId);
+
+        // Log member and schedule for debugging
+        if (member == null)
+        {
+            Console.WriteLine($"Member not found: {memberId}");
+            return NotFound("Member not found.");
+        }
+
+        if (schedule == null)
+        {
+            Console.WriteLine($"Schedule not found: {scheduleId}");
+            return NotFound("Schedule not found.");
+        }
+
+        // Proceed with creating the member-schedule relationship
+        var memberSchedule = new MemberSchedule
+        {
+            MemberFK = memberId,
+            ScheduleID = scheduleId
+        };
+
+        _context.MemberSchedules.Add(memberSchedule);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("ScheduleList"); // Or another action
     }
 }

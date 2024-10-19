@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Anyone4Tennis.Models.EnrollmentViewModel>
+
+@{
+    ViewData["Title"] = "My Enrollments";
+}
+
+<h1>My Enrollments</h1>
+
+@if (!Model.Any())
+{
+    <p>You are not enrolled in any schedules.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var enrollment in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => enrollment.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => enrollment.Location)</td>
+                    <td>@Html.DisplayFor(modelItem => enrollment.StartTime)</td>
+                    <td>@Html.DisplayFor(modelItem => enrollment.EndTime)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

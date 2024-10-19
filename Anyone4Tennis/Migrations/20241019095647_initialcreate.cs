@@ -188,6 +188,31 @@ namespace Anyone4Tennis.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "MemberSchedules",
+                columns: table => new
+                {
+                    MemberScheduleId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MemberFK = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ScheduleID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MemberSchedules", x => x.MemberScheduleId);
+                    table.ForeignKey(
+                        name: "FK_MemberSchedules_AspNetUsers_MemberFK",
+                        column: x => x.MemberFK,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_MemberSchedules_Schedules_ScheduleID",
+                        column: x => x.ScheduleID,
+                        principalTable: "Schedules",
+                        principalColumn: "SchedulesID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -228,6 +253,16 @@ namespace Anyone4Tennis.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MemberSchedules_MemberFK",
+                table: "MemberSchedules",
+                column: "MemberFK");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MemberSchedules_ScheduleID",
+                table: "MemberSchedules",
+                column: "ScheduleID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Schedules_CoachId",
                 table: "Schedules",
                 column: "CoachId");
@@ -252,10 +287,13 @@ namespace Anyone4Tennis.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Schedules");
+                name: "MemberSchedules");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Schedules");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

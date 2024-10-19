@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Anyone4Tennis.Controllers
@@ -108,6 +109,29 @@ namespace Anyone4Tennis.Controllers
 
             ViewBag.Status = "Emails sent successfully!";
             return View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> MyEnrollments()
+        {
+            // Get the logged-in user's ID
+            var memberId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            // Retrieve the member's enrolled schedules
+            var enrollments = await _context.MemberSchedules
+                .Where(ms => ms.MemberFK == memberId)
+                .Include(ms => ms.Schedules) // Include the Schedule details
+                .Select(ms => new EnrollmentViewModel
+                {
+                    MemberScheduleId = ms.MemberScheduleId,
+                    Title = ms.Schedules.Title,
+                    Location = ms.Schedules.Location,
+                    StartTime = ms.Schedules.StartTime,
+                    EndTime = ms.Schedules.EndTime
+                })
+                .ToListAsync();
+
+            return View(enrollments);
         }
     }
 }
