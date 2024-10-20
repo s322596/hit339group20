@@ -84,9 +84,8 @@ public class SchedulesController : Controller
 
         if (currentUser is Coach) // Check if the logged-in user is a coach
         {
-            // Filter the schedules by CoachId and include Coach details
+            // Filter the schedules by CoachId
             var schedules = await _context.Schedules
-                .Include(s => s.Coach)  // Include the Coach entity to access coach details
                 .Where(s => s.Coach.Id == currentUser.Id)
                 .ToListAsync();
             return View(schedules);
@@ -100,22 +99,18 @@ public class SchedulesController : Controller
                 .Select(ms => ms.ScheduleID) // Select the ScheduleID
                 .ToListAsync();
 
-            // Get all schedules except those the member is already enrolled in and include Coach details
+            // Get all schedules except those the member is already enrolled in
             var availableSchedules = await _context.Schedules
-                .Include(s => s.Coach)  // Include the Coach entity to access coach details
                 .Where(s => !enrolledScheduleIds.Contains(s.SchedulesID)) // Filter out enrolled schedules
                 .ToListAsync();
 
             return View(availableSchedules);
         }
 
-        // If no specific role is detected or no user is logged in, return all schedules and include Coach details
-        var allSchedules = await _context.Schedules
-            .Include(s => s.Coach)  // Include the Coach entity to access coach details
-            .ToListAsync();
+        // If no specific role is detected or no user is logged in, return all schedules
+        var allSchedules = await _context.Schedules.ToListAsync();
         return View(allSchedules);
     }
-
 
 
     [Authorize]
