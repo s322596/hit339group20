@@ -26,13 +26,25 @@
                 <td>@Html.DisplayFor(m => item.StartTime)</td>
                 <td>@Html.DisplayFor(m => item.EndTime)</td>
                 <td>@Html.DisplayFor(m => item.CoachId)</td> <!-- Update as needed to display coach name -->
+                @if (User.IsInRole("Member"))
+                {
                 <td>
                     <form asp-action="Enroll" asp-controller="Schedules" method="post">
-                        @Html.AntiForgeryToken()
                         <input type="hidden" name="scheduleId" value="@item.SchedulesID" />
                         <button type="submit" class="btn btn-primary">Enroll</button>
                     </form>
                 </td>
+                }
+
+                @if (User.IsInRole("Coach"))
+                {
+                <td>
+                    <form asp-action="Members" asp-controller="Schedules" method="post">
+                        <input type="hidden" name="id" value="@item.SchedulesID" />
+                        <button type="submit" class="btn btn-primary">View Enrolled Members</button>
+                    </form>
+                </td>
+                }
             </tr>
         }
     </tbody>

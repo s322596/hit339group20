@@ -42,7 +42,7 @@
                             @if (User.IsInRole("Admin") || User.IsInRole("Coach"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Member" asp-action="EmailMembers">Announcement</a>
+                                    <a class="nav-link text-dark" asp-controller="Member" asp-action="EmailMembers">Announcement</a>
                                 </li>
                             }
                             @if (User.IsInRole("Member"))
