@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Anyone4Tennis.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241020084119_Initial")]
-    partial class Initial
+    [Migration("20241020090451_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -335,11 +335,11 @@ namespace Anyone4Tennis.Migrations
             modelBuilder.Entity("Anyone4Tennis.Models.MemberSchedule", b =>
                 {
                     b.HasOne("Anyone4Tennis.Models.Member", "Member")
-                        .WithMany()
+                        .WithMany("MemberSchedules")
                         .HasForeignKey("MemberFK");
 
                     b.HasOne("Anyone4Tennis.Models.Schedules", "Schedules")
-                        .WithMany()
+                        .WithMany("MemberSchedules")
                         .HasForeignKey("ScheduleID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -409,6 +409,16 @@ namespace Anyone4Tennis.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Anyone4Tennis.Models.Schedules", b =>
+                {
+                    b.Navigation("MemberSchedules");
+                });
+
+            modelBuilder.Entity("Anyone4Tennis.Models.Member", b =>
+                {
+                    b.Navigation("MemberSchedules");
                 });
 #pragma warning restore 612, 618
         }

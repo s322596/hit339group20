@@ -13,5 +13,7 @@ namespace Anyone4Tennis.Models
 
         // Navigation Property for Coach
         public virtual Coach Coach { get; set; }
+
+        public ICollection<MemberSchedule> MemberSchedules { get; set; } = new List<MemberSchedule>();
     }
 }

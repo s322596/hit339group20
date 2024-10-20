@@ -1,62 +1,37 @@
 ﻿@model IEnumerable<Anyone4Tennis.Models.Schedules>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Schedule List";
 }
 
-<h1>Index</h1>
+<h1>Your Schedule List</h1>
 
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CoachId)
-            </th>
-            <th>
-                action
-            </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.First().Title)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Location)</th>
+            <th>@Html.DisplayNameFor(model => model.First().StartTime)</th>
+            <th>@Html.DisplayNameFor(model => model.First().EndTime)</th>
+            <th>@Html.DisplayNameFor(model => model.First().CoachId)</th> <!-- You can also change this to display coach name if needed -->
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CoachId)
-                </td>
+                <td>@Html.DisplayFor(m => item.Title)</td>
+                <td>@Html.DisplayFor(m => item.Location)</td>
+                <td>@Html.DisplayFor(m => item.StartTime)</td>
+                <td>@Html.DisplayFor(m => item.EndTime)</td>
+                <td>@Html.DisplayFor(m => item.CoachId)</td> <!-- Update as needed to display coach name -->
                 <td>
                     <form asp-action="Enroll" asp-controller="Schedules" method="post">
                         @Html.AntiForgeryToken()
                         <input type="hidden" name="scheduleId" value="@item.SchedulesID" />
                         <button type="submit" class="btn btn-primary">Enroll</button>
                     </form>
-                </td>
-                <td>
                 </td>
             </tr>
         }

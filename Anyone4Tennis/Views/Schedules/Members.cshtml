@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Anyone4Tennis.Models.Member>
+
+@{
+    ViewData["Title"] = "Members in Schedule";
+}
+
+<h1>Members in Schedule</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => member.FirstName)</td>
+                <td>@Html.DisplayFor(m => member.LastName)</td>
+                <td>@Html.DisplayFor(m => member.Email)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" asp-controller="Schedules" class="btn btn-secondary">Back to Schedule List</a>

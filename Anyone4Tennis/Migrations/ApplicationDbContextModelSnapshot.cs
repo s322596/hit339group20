@@ -332,11 +332,11 @@ namespace Anyone4Tennis.Migrations
             modelBuilder.Entity("Anyone4Tennis.Models.MemberSchedule", b =>
                 {
                     b.HasOne("Anyone4Tennis.Models.Member", "Member")
-                        .WithMany()
+                        .WithMany("MemberSchedules")
                         .HasForeignKey("MemberFK");
 
                     b.HasOne("Anyone4Tennis.Models.Schedules", "Schedules")
-                        .WithMany()
+                        .WithMany("MemberSchedules")
                         .HasForeignKey("ScheduleID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -406,6 +406,16 @@ namespace Anyone4Tennis.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Anyone4Tennis.Models.Schedules", b =>
+                {
+                    b.Navigation("MemberSchedules");
+                });
+
+            modelBuilder.Entity("Anyone4Tennis.Models.Member", b =>
+                {
+                    b.Navigation("MemberSchedules");
                 });
 #pragma warning restore 612, 618
         }

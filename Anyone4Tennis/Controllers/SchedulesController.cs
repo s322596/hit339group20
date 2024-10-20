@@ -1,6 +1,7 @@
 ﻿using Anyone4Tennis.Data;
 using Anyone4Tennis.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
@@ -10,10 +11,12 @@ using System.Security.Claims;
 public class SchedulesController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public SchedulesController(ApplicationDbContext context)
+    public SchedulesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
 
 
@@ -76,8 +79,39 @@ public class SchedulesController : Controller
 
     public async Task<IActionResult> ScheduleList()
     {
-        return View(await _context.Schedules.ToListAsync());
+        // Get the currently logged-in user
+        var currentUser = await _userManager.GetUserAsync(User);
+
+        if (currentUser is Coach) // Check if the logged-in user is a coach
+        {
+            // Filter the schedules by CoachId
+            var schedules = await _context.Schedules
+                .Where(s => s.Coach.Id == currentUser.Id)
+                .ToListAsync();
+            return View(schedules);
+        }
+
+        if (currentUser is Member) // Check if the logged-in user is a member
+        {
+            // Get the IDs of schedules the member is already enrolled in
+            var enrolledScheduleIds = await _context.MemberSchedules
+                .Where(ms => ms.MemberFK == currentUser.Id) // Assuming MemberFK stores the member's ID
+                .Select(ms => ms.ScheduleID) // Select the ScheduleID
+                .ToListAsync();
+
+            // Get all schedules except those the member is already enrolled in
+            var availableSchedules = await _context.Schedules
+                .Where(s => !enrolledScheduleIds.Contains(s.SchedulesID)) // Filter out enrolled schedules
+                .ToListAsync();
+
+            return View(availableSchedules);
+        }
+
+        // If no specific role is detected or no user is logged in, return all schedules
+        var allSchedules = await _context.Schedules.ToListAsync();
+        return View(allSchedules);
     }
+
 
     [Authorize]
     [HttpPost]
@@ -111,5 +145,20 @@ public class SchedulesController : Controller
         await _context.SaveChangesAsync();
 
         return RedirectToAction("ScheduleList"); // Or another action
+    }
+
+    public async Task<IActionResult> Members(int id)
+    {
+        var schedule = await _context.Schedules
+            .Include(s => s.MemberSchedules)
+            .ThenInclude(ms => ms.Member) // Include the related Member
+            .FirstOrDefaultAsync(s => s.SchedulesID == id);
+
+        if (schedule == null)
+        {
+            return NotFound(); // Return a 404 if the schedule is not found
+        }
+
+        return View(schedule.MemberSchedules.Select(ms => ms.Member)); // Pass the members to the view
     }
 }
