@@ -44,7 +44,10 @@
         </div>
 
         <div style="margin-top: 10px;">
-            <button type="submit">Save</button>
+            @if (User.IsInRole("Admin") || User.IsInRole("Coach"))
+            {
+                <button type="submit">Save</button>
+            }
             <button type="button" onclick="resetForm()">Cancel</button>
         </div>
     </form>

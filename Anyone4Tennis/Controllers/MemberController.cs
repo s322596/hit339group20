@@ -23,7 +23,7 @@ namespace Anyone4Tennis.Controllers
             _context = context;
             _emailSender = emailSender;
         }
-
+        [Authorize(Roles = "Admin,Coach")]
         public async Task<IActionResult> List()
         {
             var members = await _context.Users
@@ -47,7 +47,7 @@ namespace Anyone4Tennis.Controllers
             return View(memberViewModels);
         }
 
-
+        [Authorize(Roles = "Admin,Coach")]
         [HttpPost]
         public async Task<IActionResult> UpdateMemberStatus(int MemberId, bool Active)
         {
@@ -70,14 +70,14 @@ namespace Anyone4Tennis.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin,Coach")]
         // Updated to reflect the new view name EmailMembers
         public async Task<IActionResult> EmailMembers()
         {
             // Return the view with an empty form to input email subject and message
             return View();
         }
-
+        [Authorize(Roles = "Admin,Coach")]
         [HttpPost]
         public async Task<IActionResult> EmailMembers(string subject, string message)
         {

@@ -49,7 +49,7 @@ public class SchedulesController : Controller
 
         return new JsonResult(events);
     }
-
+    [Authorize(Roles = "Admin,Coach")]
     // POST: /Schedules/CreateSchedule
     [HttpPost]
     public async Task<IActionResult> CreateSchedule([FromBody] Schedules schedule)
