@@ -13,7 +13,7 @@
             <th>@Html.DisplayNameFor(model => model.First().Location)</th>
             <th>@Html.DisplayNameFor(model => model.First().StartTime)</th>
             <th>@Html.DisplayNameFor(model => model.First().EndTime)</th>
-            <th>@Html.DisplayNameFor(model => model.First().CoachId)</th> <!-- You can also change this to display coach name if needed -->
+            <th>Coach</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -25,7 +25,7 @@
                 <td>@Html.DisplayFor(m => item.Location)</td>
                 <td>@Html.DisplayFor(m => item.StartTime)</td>
                 <td>@Html.DisplayFor(m => item.EndTime)</td>
-                <td>@Html.DisplayFor(m => item.CoachId)</td> <!-- Update as needed to display coach name -->
+                <td>@item.Coach.FirstName @item.Coach.LastName</td>
                 @if (User.IsInRole("Member"))
                 {
                 <td>
