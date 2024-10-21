@@ -151,6 +151,37 @@ namespace Anyone4Tennis.Data
             await EnsureMemberExists(userManager, "laura.smith@anyone4tennis.com", "Password123!", "Member", "Laura", "Smith", false, 99);
             await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", false, 100);
 
+            var coachEmily = await userManager.FindByEmailAsync("emily.smith1@anyone4tennis.com") as Coach;
+            var coachJane = await userManager.FindByEmailAsync("jane.johnson1@anyone4tennis.com") as Coach;
+
+            // Seed schedules if they don't already exist
+            if (!context.Schedules.Any())
+            {
+                context.Schedules.AddRange(
+                    new Schedules
+                    {
+                        Title = "Tennis Basics",
+                        Location = "Court 1",
+                        StartTime = new DateTime(2024, 10, 21, 9, 0, 0),
+                        EndTime = new DateTime(2024, 10, 21, 9, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachEmily.Id,  // Assign the CoachId from the seeded coach
+                        Coach = coachEmily         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Advanced Techniques",
+                        Location = "Court 2",
+                        StartTime = new DateTime(2024, 10, 22, 14, 0, 0),
+                        EndTime = new DateTime(2024, 10, 22, 14, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    }
+                );
+                await context.SaveChangesAsync();
+            }
+
         }
 
         private static async Task EnsureRoleExists(RoleManager<IdentityRole> roleManager, string roleName)
@@ -261,6 +292,8 @@ namespace Anyone4Tennis.Data
                 }
             }
         }
+
+
 
         // Helper method to read the image file and convert it to a byte array
         private static async Task<byte[]> GetPhotoAsByteArray(string photoPath, string webRootPath)
