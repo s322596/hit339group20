@@ -14,7 +14,10 @@
             <th>@Html.DisplayNameFor(model => model.First().StartTime)</th>
             <th>@Html.DisplayNameFor(model => model.First().EndTime)</th>
             <th>Coach</th>
-            <th>Action</th>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <th>Action</th>
+            }
         </tr>
     </thead>
     <tbody>
