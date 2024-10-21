@@ -49,6 +49,10 @@
                 <button type="submit">Save</button>
             }
             <button type="button" onclick="resetForm()">Cancel</button>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <button type="button" onclick="window.location.href='@Url.Action("ScheduleList", "Schedules")'">Details</button>
+            }
         </div>
     </form>
 </div>

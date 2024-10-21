@@ -19,7 +19,6 @@ public class SchedulesController : Controller
         _userManager = userManager;
     }
 
-
     // GET: Schedules
     public async Task<IActionResult> Index()
     {
