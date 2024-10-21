@@ -121,13 +121,15 @@ namespace Anyone4Tennis.Controllers
             var enrollments = await _context.MemberSchedules
                 .Where(ms => ms.MemberFK == memberId)
                 .Include(ms => ms.Schedules) // Include the Schedule details
+                .ThenInclude(s => s.Coach)
                 .Select(ms => new EnrollmentViewModel
                 {
                     MemberScheduleId = ms.MemberScheduleId,
                     Title = ms.Schedules.Title,
                     Location = ms.Schedules.Location,
                     StartTime = ms.Schedules.StartTime,
-                    EndTime = ms.Schedules.EndTime
+                    EndTime = ms.Schedules.EndTime,
+                    CoachName = ms.Schedules.Coach.FirstName + " " + ms.Schedules.Coach.LastName
                 })
                 .ToListAsync();
 

@@ -19,6 +19,7 @@ else
                 <th>Location</th>
                 <th>Start Time</th>
                 <th>End Time</th>
+                <th>Coach</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@ else
                     <td>@Html.DisplayFor(modelItem => enrollment.Location)</td>
                     <td>@Html.DisplayFor(modelItem => enrollment.StartTime)</td>
                     <td>@Html.DisplayFor(modelItem => enrollment.EndTime)</td>
+                    <td>@Html.DisplayFor(modelItem => enrollment.CoachName)</td>
                 </tr>
             }
         </tbody>
