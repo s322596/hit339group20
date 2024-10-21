@@ -11,7 +11,10 @@
 
 <!-- Schedule creation/edit form under the calendar -->
 <div id="scheduleFormContainer">
+    @if (User.IsInRole("Admin") || User.IsInRole("Coach"))
+    {
     <h3>Create Schedule</h3>
+    
     <form id="scheduleForm">
         <input type="hidden" id="scheduleId" />
 
@@ -55,6 +58,7 @@
             }
         </div>
     </form>
+    }
 </div>
 
 @section Scripts {
