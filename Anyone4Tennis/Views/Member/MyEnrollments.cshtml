@@ -1,16 +1,12 @@
-﻿@model IEnumerable<Anyone4Tennis.Models.EnrollmentViewModel>
+﻿@model IEnumerable<Anyone4Tennis.Models.ViewModels.EnrollmentViewModel>
 
 @{
     ViewData["Title"] = "My Enrollments";
 }
 
-<h1>My Enrollments</h1>
+<h2>My Enrollments</h2>
 
-@if (!Model.Any())
-{
-    <p>You are not enrolled in any schedules.</p>
-}
-else
+@if (Model != null && Model.Any())
 {
     <table class="table">
         <thead>
@@ -20,19 +16,56 @@ else
                 <th>Start Time</th>
                 <th>End Time</th>
                 <th>Coach</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var enrollment in Model)
             {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => enrollment.Title)</td>
-                    <td>@Html.DisplayFor(modelItem => enrollment.Location)</td>
-                    <td>@Html.DisplayFor(modelItem => enrollment.StartTime)</td>
-                    <td>@Html.DisplayFor(modelItem => enrollment.EndTime)</td>
-                    <td>@Html.DisplayFor(modelItem => enrollment.CoachName)</td>
+                    <td>@enrollment.Title</td>
+                    <td>@enrollment.Location</td>
+                    <td>@enrollment.StartTime.ToString("g")</td> <!-- Short date and time format -->
+                    <td>@enrollment.EndTime.ToString("g")</td>
+                    <td>@enrollment.CoachName</td>
+                    <td>
+                        <!-- Unenroll button -->
+                        <form asp-action="Unenroll" method="post">
+                            <input type="hidden" name="scheduleId" value="@enrollment.MemberScheduleId" />
+                            <button type="submit" class="btn btn-danger">Unenroll</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 }
+else
+{
+    <p>You are not currently enrolled in any schedules.</p>
+}
+
+<!-- Display success or error messages -->
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<!-- Confirmation prompt for unenrolling -->
+<script>
+    document.querySelectorAll("form").forEach(form => {
+        form.addEventListener("submit", function(event) {
+            if (!confirm("Are you sure you want to unenroll from this schedule?")) {
+                event.preventDefault(); // Prevent form submission if user cancels
+            }
+        });
+    });
+</script>

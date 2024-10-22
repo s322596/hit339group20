@@ -1,4 +1,4 @@
-﻿namespace Anyone4Tennis.Models
+﻿namespace Anyone4Tennis.Models.ViewModels
 {
     public class EnrollmentViewModel
     {

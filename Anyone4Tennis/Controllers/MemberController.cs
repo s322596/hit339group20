@@ -135,5 +135,31 @@ namespace Anyone4Tennis.Controllers
 
             return View(enrollments);
         }
+
+        [Authorize(Roles = "Member")]
+        [HttpPost]
+        public async Task<IActionResult> Unenroll(int scheduleId)
+        {
+            // Get the logged-in user's ID
+            var memberId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            // Find the enrollment in the database
+            var enrollment = await _context.MemberSchedules
+                .FirstOrDefaultAsync(ms => ms.MemberScheduleId == scheduleId && ms.MemberFK == memberId);
+
+            if (enrollment != null)
+            {
+                // Remove the enrollment
+                _context.MemberSchedules.Remove(enrollment);
+                await _context.SaveChangesAsync();
+                TempData["Message"] = "You have successfully unenrolled from the schedule.";
+            }
+            else
+            {
+                TempData["Error"] = "You are not enrolled in this schedule.";
+            }
+
+            return RedirectToAction("MyEnrollments");
+        }
     }
 }

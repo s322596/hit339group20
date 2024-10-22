@@ -26,8 +26,8 @@
             <tr>
                 <td>@Html.DisplayFor(m => item.Title)</td>
                 <td>@Html.DisplayFor(m => item.Location)</td>
-                <td>@item.StartTime.ToString("MM/dd/yyyy h:mm tt")</td>
-                <td>@item.EndTime.ToString("MM/dd/yyyy h:mm tt")</td>
+                <td>@item.StartTime.ToString("g")</td>
+                <td>@item.EndTime.ToString("g")</td>
                 <td>@item.Coach.FirstName @item.Coach.LastName</td>
                 @if (User.IsInRole("Member"))
                 {
