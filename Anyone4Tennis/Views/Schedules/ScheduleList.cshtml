@@ -14,7 +14,7 @@
             <th>@Html.DisplayNameFor(model => model.First().StartTime)</th>
             <th>@Html.DisplayNameFor(model => model.First().EndTime)</th>
             <th>Coach</th>
-            @if (User.IsInRole("Admin") || User.IsInRole("Member"))
+            @if (User.IsInRole("Coach") || User.IsInRole("Member"))
             {
                 <th>Action</th>
             }
