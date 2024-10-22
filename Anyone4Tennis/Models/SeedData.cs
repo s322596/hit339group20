@@ -177,6 +177,306 @@ namespace Anyone4Tennis.Data
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
                         Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Junior Tennis Tournament",
+                        Location = "Court D",
+                        StartTime = new DateTime(2024, 10, 30, 9, 0, 0),
+                        EndTime = new DateTime(2024, 10, 30, 15, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Stroke Analysis",
+                        Location = "Court D",
+                        StartTime = new DateTime(2024, 10, 31, 9, 0, 0),
+                        EndTime = new DateTime(2024, 10, 31, 12, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "High School Tennis Championships",
+                        Location = "Court D",
+                        StartTime = new DateTime(2024, 11, 1, 9, 0, 0),
+                        EndTime = new DateTime(2024, 11, 1, 15, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Kids Tennis Fun Day",
+                        Location = "Court C",
+                        StartTime = new DateTime(2024, 11, 1, 10, 0, 0),
+                        EndTime = new DateTime(2024, 11, 1, 15, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Weekend Tennis Social",
+                        Location = "Court C",
+                        StartTime = new DateTime(2024, 11, 2, 17, 0, 0),
+                        EndTime = new DateTime(2024, 11, 2, 19, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Men's Singles Tournament",
+                        Location = "Court D",
+                        StartTime = new DateTime(2024, 11, 3, 9, 0, 0),
+                        EndTime = new DateTime(2024, 11, 3, 16, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Umpire Training",
+                        Location = "Court 2",
+                        StartTime = new DateTime(2024, 11, 5, 12, 0, 0),
+                        EndTime = new DateTime(2024, 11, 5, 16, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "College Tennis Playoffs",
+                        Location = "Court D",
+                        StartTime = new DateTime(2024, 11, 8, 9, 0, 0),
+                        EndTime = new DateTime(2024, 11, 8, 15, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Serve Practice",
+                        Location = "Court C",
+                        StartTime = new DateTime(2024, 11, 8, 9, 0, 0),
+                        EndTime = new DateTime(2024, 11, 8, 12, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Doubles Tournament",
+                        Location = "Court A",
+                        StartTime = new DateTime(2024, 11, 9, 8, 30, 0),
+                        EndTime = new DateTime(2024, 11, 9, 17, 30, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Serve Practice",
+                        Location = "Court B",
+                        StartTime = new DateTime(2024, 11, 9, 12, 0, 0),
+                        EndTime = new DateTime(2024, 11, 9, 15, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Fitness Workshop",
+                        Location = "Court B",
+                        StartTime = new DateTime(2024, 11, 10, 12, 0, 0),
+                        EndTime = new DateTime(2024, 11, 10, 17, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Kids Tennis Fun Day",
+                        Location = "Court C",
+                        StartTime = new DateTime(2024, 11, 11, 10, 0, 0),
+                        EndTime = new DateTime(2024, 11, 11, 14, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "College Tennis Playoffs",
+                        Location = "Court C",
+                        StartTime = new DateTime(2024, 11, 12, 9, 0, 0),
+                        EndTime = new DateTime(2024, 11, 12, 15, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Weekend Tennis Social",
+                        Location = "Court D",
+                        StartTime = new DateTime(2024, 11, 16, 17, 0, 0),
+                        EndTime = new DateTime(2024, 11, 16, 19, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Local Club Tennis Challenge",
+                        Location = "Court C",
+                        StartTime = new DateTime(2024, 11, 17, 12, 0, 0),
+                        EndTime = new DateTime(2024, 11, 17, 16, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Local Club Tennis Challenge",
+                        Location = "Court D",
+                        StartTime = new DateTime(2024, 11, 17, 12, 0, 0),
+                        EndTime = new DateTime(2024, 11, 17, 16, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Coaching Clinic",
+                        Location = "Court C",
+                        StartTime = new DateTime(2024, 11, 18, 12, 0, 0),
+                        EndTime = new DateTime(2024, 11, 18, 16, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Stroke Analysis",
+                        Location = "Court A",
+                        StartTime = new DateTime(2024, 11, 18, 12, 0, 0),
+                        EndTime = new DateTime(2024, 11, 18, 16, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Open Play",
+                        Location = "Court D",
+                        StartTime = new DateTime(2024, 11, 18, 12, 0, 0),
+                        EndTime = new DateTime(2024, 11, 18, 16, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Open Play",
+                        Location = "Court D",
+                        StartTime = new DateTime(2024, 11, 19, 12, 0, 0),
+                        EndTime = new DateTime(2024, 11, 19, 16, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Open Play",
+                        Location = "Court B",
+                        StartTime = new DateTime(2024, 11, 19, 12, 0, 0),
+                        EndTime = new DateTime(2024, 11, 19, 16, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Pro-Am Doubles Match",
+                        Location = "Court A",
+                        StartTime = new DateTime(2024, 11, 20, 10, 0, 0),
+                        EndTime = new DateTime(2024, 11, 20, 14, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Serve Practice",
+                        Location = "Court D",
+                        StartTime = new DateTime(2024, 11, 23, 12, 0, 0),
+                        EndTime = new DateTime(2024, 11, 23, 16, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Tennis Bootcamp",
+                        Location = "Court B",
+                        StartTime = new DateTime(2025, 1, 10, 9, 0, 0),
+                        EndTime = new DateTime(2025, 1, 10, 13, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Kids Tennis Fun Day",
+                        Location = "Court B",
+                        StartTime = new DateTime(2025, 1, 12, 9, 0, 0),
+                        EndTime = new DateTime(2025, 1, 12, 14, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "College Tennis Playoffs",
+                        Location = "Court C",
+                        StartTime = new DateTime(2025, 1, 20, 9, 0, 0),
+                        EndTime = new DateTime(2025, 1, 20, 14, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Advanced Tennis Strategy Session",
+                        Location = "Court A",
+                        StartTime = new DateTime(2025, 1, 20, 12, 0, 0),
+                        EndTime = new DateTime(2025, 1, 20, 15, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "Community Tennis Mixer",
+                        Location = "Court A",
+                        StartTime = new DateTime(2025, 1, 21, 9, 0, 0),
+                        EndTime = new DateTime(2025, 1, 21, 13, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
+                    },
+                    new Schedules
+                    {
+                        Title = "High School Tennis Championships",
+                        Location = "Court B",
+                        StartTime = new DateTime(2025, 1, 22, 9, 0, 0),
+                        EndTime = new DateTime(2025, 1, 22, 15, 0, 0),
+                        IsFullDay = false,
+                        CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
+                        Coach = coachJane         // Set the navigation property
                     }
                 );
                 await context.SaveChangesAsync();
