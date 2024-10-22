@@ -29,26 +29,35 @@
                 <td>@item.StartTime.ToString("g")</td>
                 <td>@item.EndTime.ToString("g")</td>
                 <td>@item.Coach.FirstName @item.Coach.LastName</td>
+
                 @if (User.IsInRole("Member"))
                 {
-                <td>
-                    <form asp-action="Enroll" asp-controller="Schedules" method="post">
-                        <input type="hidden" name="scheduleId" value="@item.SchedulesID" />
-                        <button type="submit" class="btn btn-primary">Enroll</button>
-                    </form>
-                </td>
+                    <td>
+                        <form asp-action="Enroll" asp-controller="Schedules" method="post" onsubmit="return confirmEnroll()">
+                            <input type="hidden" name="scheduleId" value="@item.SchedulesID" />
+                            <button type="submit" class="btn btn-primary">Enroll</button>
+                        </form>
+                    </td>
                 }
 
                 @if (User.IsInRole("Coach"))
                 {
-                <td>
-                    <form asp-action="Members" asp-controller="Schedules" method="post">
-                        <input type="hidden" name="id" value="@item.SchedulesID" />
-                        <button type="submit" class="btn btn-primary">View Enrolled Members</button>
-                    </form>
-                </td>
+                    <td>
+                        <form asp-action="Members" asp-controller="Schedules" method="post">
+                            <input type="hidden" name="id" value="@item.SchedulesID" />
+                            <button type="submit" class="btn btn-primary">View Enrolled Members</button>
+                        </form>
+                    </td>
                 }
             </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        function confirmEnroll() {
+            return confirm("Are you sure you want to enroll in this schedule?");
+        }
+    </script>
+}
