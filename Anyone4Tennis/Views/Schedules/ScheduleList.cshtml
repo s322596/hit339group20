@@ -4,7 +4,14 @@
     ViewData["Title"] = "Schedule List";
 }
 
-<h1>Your Schedule List</h1>
+@if (User.IsInRole("Member") || User.IsInRole("Coach"))
+{
+    <h1>Your Schedule List</h1>
+}
+@if (User.IsInRole("Admin"))
+{
+    <h1>Schedule List</h1>
+}
 
 <table class="table">
     <thead>
