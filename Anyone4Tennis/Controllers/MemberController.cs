@@ -23,7 +23,7 @@ namespace Anyone4Tennis.Controllers
             _context = context;
             _emailSender = emailSender;
         }
-        [Authorize(Roles = "Admin,Coach")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> List()
         {
             var members = await _context.Users

@@ -61,14 +61,13 @@
             <div style="margin-top: 10px;">
                 @if (User.IsInRole("Admin"))
                 {
-                    <button type="submit">Save</button>
+                    <button type="submit">Create</button>
                 }
-                <button type="button" onclick="resetForm()">Cancel</button>
-
                 @if (User.Identity.IsAuthenticated)
                 {
                     <button type="button" onclick="window.location.href='@Url.Action("ScheduleList", "Schedules")'">Details</button>
                 }
+                <button type="button" onclick="resetForm()">Cancel</button>
             </div>
         </form>
     }
@@ -149,7 +148,7 @@
                             calendar.refetchEvents();  // Refresh calendar events
                             resetForm();  // Reset form after saving
                         } else {
-                            alert('Failed to save schedule');
+                            alert('Schedule already exist');
                         }
                     });
             });
