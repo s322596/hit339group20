@@ -35,13 +35,10 @@ public class SchedulesController : Controller
             .Select(b => new
             {
                 id = b.SchedulesID,
-                title = string.Format("{0} - {1} - {2:t} - {3:t} - {4} {5}",
+                title = string.Format("{0} - {1:t} - {2:t}",
                                       b.Title,
-                                      b.Location,
                                       b.StartTime,
-                                      b.EndTime,
-                                      b.Coach.FirstName,
-                                      b.Coach.LastName),
+                                      b.EndTime),
                 start = b.StartTime,
                 end = b.EndTime,
                 location = b.Location,
