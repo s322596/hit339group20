@@ -34,16 +34,24 @@ public class SchedulesController : Controller
             .Include(b => b.Coach)
             .Select(b => new
             {
-                title = string.Format("{0} - {1:t} - {2:t}",
+                id = b.SchedulesID,
+                title = string.Format("{0} - {1} - {2:t} - {3:t} - {4} {5}",
                                       b.Title,
+                                      b.Location,
                                       b.StartTime,
-                                      b.EndTime),
+                                      b.EndTime,
+                                      b.Coach.FirstName,
+                                      b.Coach.LastName),
                 start = b.StartTime,
-                end = b.EndTime
+                end = b.EndTime,
+                location = b.Location,
+                coachId = b.CoachId,
+                coachName = b.Coach.FirstName + " " + b.Coach.LastName
             }).ToListAsync();
 
         return new JsonResult(events);
     }
+
     [Authorize(Roles = "Admin,Coach")]
     // POST: /Schedules/CreateSchedule
     [HttpPost]

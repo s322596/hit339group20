@@ -151,6 +151,10 @@ namespace Anyone4Tennis.Data
             await EnsureMemberExists(userManager, "laura.smith@anyone4tennis.com", "Password123!", "Member", "Laura", "Smith", false, 99);
             await EnsureMemberExists(userManager, "jessica.wilson@anyone4tennis.com", "Password123!", "Member", "Jessica", "Wilson", false, 100);
 
+            // Email message all avtive members test with real email addresses
+            await EnsureMemberExists(userManager, "30jananh@gmail.com", "Password123!", "Member", "Janan", "Ha", true, 101);
+            await EnsureMemberExists(userManager, "ducanh.dinh101@gmail.com", "Password123!", "Member", "Janan", "Ha", true, 102);
+
             var coachEmily = await userManager.FindByEmailAsync("emily.smith1@anyone4tennis.com") as Coach;
             var coachJane = await userManager.FindByEmailAsync("jane.johnson1@anyone4tennis.com") as Coach;
 

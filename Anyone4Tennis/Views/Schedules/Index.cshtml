@@ -33,8 +33,8 @@
 
             <div>
                 <label for="location">Location:</label>
-                <textarea id="location" required
-                @(User.IsInRole("Member") || User.IsInRole("Coach") ? "disabled style='background-color: lightgray;'" : "")></textarea>
+                <input type="text" id="location" required
+                @(User.IsInRole("Member") || User.IsInRole("Coach") ? "disabled style='background-color: lightgray;'" : "") />
             </div>
 
             <div>
