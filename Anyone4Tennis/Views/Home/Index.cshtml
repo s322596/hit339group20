@@ -1,11 +1,21 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome to Anyone4Tennis!</h1>
-    <p>Want to get active? Looking for a great social sport? Have a fitness goal? Tennis can be the answer for all those questions!</p>
-    <p>Anyone4Tennis is a tennis organisation by locals for locals. Founded in [REDACTED], the organisation has recieved widespread acceptance across the city.</p>
-    <p>Everybody is welcome, from the newbies to the professinals. We have a class for a wide range of skill sets and a wide range of ages.</p>
-    <p>Join us for a match, we can't wait!</p>
-</div>
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<!-- Masthead -->
+<header class="masthead">
+    <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end">
+                <h1 class="text-white font-weight-bold">Welcome to Anyone4Tennis!</h1>
+                <hr class="divider" />
+            </div>
+            <div class="col-lg-8 align-self-baseline">
+                <p class="text-white-75 mb-5">Want to get active? Looking for a great social sport? Have a fitness goal? Tennis can be the answer for all those questions!</p>
+                <p class="text-white-75 mb-5">Anyone4Tennis is a tennis organisation by locals for locals. Founded in [REDACTED], the organisation has received widespread acceptance across the city.</p>
+                <p class="text-white-75 mb-5">Everybody is welcome, from the newbies to the professionals. We have classes for a wide range of skill sets and ages. Join us for a match, we can't wait!</p>
+                <a class="btn btn-primary btn-xl" href="#join">Join Us</a>
+            </div>
+        </div>
+    </div>
+</header>
