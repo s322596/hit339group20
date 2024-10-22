@@ -80,13 +80,14 @@ public class SchedulesController : Controller
     {
         // Get the currently logged-in user
         var currentUser = await _userManager.GetUserAsync(User);
+        var today = DateTime.Today;
 
         if (currentUser is Coach) // Check if the logged-in user is a coach
         {
             // Filter the schedules by CoachId and include Coach details
             var schedules = await _context.Schedules
                 .Include(s => s.Coach)  // Include the Coach entity to access coach details
-                .Where(s => s.Coach.Id == currentUser.Id)
+                .Where(s => s.Coach.Id == currentUser.Id && s.StartTime >= today)
                 .ToListAsync();
             return View(schedules);
         }
@@ -102,7 +103,7 @@ public class SchedulesController : Controller
             // Get all schedules except those the member is already enrolled in and include Coach details
             var availableSchedules = await _context.Schedules
                 .Include(s => s.Coach)  // Include the Coach entity to access coach details
-                .Where(s => !enrolledScheduleIds.Contains(s.SchedulesID)) // Filter out enrolled schedules
+                .Where(s => !enrolledScheduleIds.Contains(s.SchedulesID) && s.StartTime >= today) // Filter out enrolled schedules
                 .ToListAsync();
 
             return View(availableSchedules);
@@ -111,6 +112,7 @@ public class SchedulesController : Controller
         // If no specific role is detected or no user is logged in, return all schedules and include Coach details
         var allSchedules = await _context.Schedules
             .Include(s => s.Coach)  // Include the Coach entity to access coach details
+            .Where(s => s.StartTime >= today)
             .ToListAsync();
         return View(allSchedules);
     }
