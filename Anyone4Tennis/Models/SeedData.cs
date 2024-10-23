@@ -153,7 +153,7 @@ namespace Anyone4Tennis.Data
 
             // Email message all avtive members test with real email addresses
             await EnsureMemberExists(userManager, "30jananh@gmail.com", "Password123!", "Member", "Janan", "Ha", true, 101);
-            await EnsureMemberExists(userManager, "ducanh.dinh101@gmail.com", "Password123!", "Member", "Janan", "Ha", true, 102);
+            await EnsureMemberExists(userManager, "ducanh.dinh101@gmail.com", "Password123!", "Member", "Duc Anh", "Dinh", true, 102);
 
             var coachEmily = await userManager.FindByEmailAsync("emily.smith1@anyone4tennis.com") as Coach;
             var coachJane = await userManager.FindByEmailAsync("jane.johnson1@anyone4tennis.com") as Coach;
@@ -190,7 +190,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 10, 30, 15, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily         // Set the navigation property
                     },
                     new Schedules
                     {
@@ -210,7 +210,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 1, 15, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily         // Set the navigation property
                     },
                     new Schedules
                     {
@@ -220,7 +220,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 1, 15, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily        // Set the navigation property
                     },
                     new Schedules
                     {
@@ -240,7 +240,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 3, 16, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily         // Set the navigation property
                     },
                     new Schedules
                     {
@@ -260,7 +260,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 8, 15, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily         // Set the navigation property
                     },
                     new Schedules
                     {
@@ -280,7 +280,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 9, 17, 30, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily         // Set the navigation property
                     },
                     new Schedules
                     {
@@ -300,7 +300,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 10, 17, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily        // Set the navigation property
                     },
                     new Schedules
                     {
@@ -320,7 +320,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 12, 15, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily        // Set the navigation property
                     },
                     new Schedules
                     {
@@ -340,7 +340,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 17, 16, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily         // Set the navigation property
                     },
                     new Schedules
                     {
@@ -360,7 +360,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 18, 16, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily         // Set the navigation property
                     },
                     new Schedules
                     {
@@ -380,7 +380,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 18, 16, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily       // Set the navigation property
                     },
                     new Schedules
                     {
@@ -400,7 +400,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 19, 16, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily        // Set the navigation property
                     },
                     new Schedules
                     {
@@ -420,7 +420,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2024, 11, 23, 16, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily        // Set the navigation property
                     },
                     new Schedules
                     {
@@ -440,7 +440,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2025, 1, 12, 14, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily         // Set the navigation property
                     },
                     new Schedules
                     {
@@ -460,7 +460,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2025, 1, 20, 15, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily       // Set the navigation property
                     },
                     new Schedules
                     {
@@ -480,7 +480,7 @@ namespace Anyone4Tennis.Data
                         EndTime = new DateTime(2025, 1, 22, 15, 0, 0),
                         IsFullDay = false,
                         CoachId = coachJane.Id,   // Assign the CoachId from the seeded coach
-                        Coach = coachJane         // Set the navigation property
+                        Coach = coachEmily        // Set the navigation property
                     }
                 );
                 await context.SaveChangesAsync();

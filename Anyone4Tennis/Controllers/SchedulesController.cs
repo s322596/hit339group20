@@ -116,6 +116,25 @@ public class SchedulesController : Controller
         return View(allSchedules);
     }
 
+    public async Task<IActionResult> Details(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var schedule = await _context.Schedules
+            .Include(s => s.Coach)  // Include the Coach entity to access coach details
+            .FirstOrDefaultAsync(m => m.SchedulesID == id);
+
+        if (schedule == null)
+        {
+            return NotFound();
+        }
+
+        return View(schedule);
+    }
+
     [Authorize]
     [HttpPost]
     public async Task<IActionResult> Enroll(int scheduleId, [FromServices] IEmailSender emailSender)

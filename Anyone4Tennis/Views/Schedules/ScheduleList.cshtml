@@ -25,6 +25,7 @@
             {
                 <th>Action</th>
             }
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -36,6 +37,10 @@
                 <td>@item.StartTime.ToString("g")</td>
                 <td>@item.EndTime.ToString("g")</td>
                 <td>@item.Coach.FirstName @item.Coach.LastName</td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.SchedulesID" class="btn btn-primary">View Details</a>
+                </td>
 
                 @if (User.IsInRole("Member"))
                 {

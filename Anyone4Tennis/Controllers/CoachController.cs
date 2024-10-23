@@ -35,7 +35,7 @@ namespace Anyone4Tennis.Controllers
             {
                 coachViewModels.Add(new CoachViewModel
                 {
-                    CoachId = coach.CoachId,
+                    CoachId = coach.Id,
                     FirstName = coach.FirstName,
                     LastName = coach.LastName,
                     Biography = coach.Biography,
@@ -45,11 +45,11 @@ namespace Anyone4Tennis.Controllers
 
             return View(coachViewModels);
         }
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(string id)
         {
             var coach = await _context.Users
                 .OfType<Coach>()
-                .FirstOrDefaultAsync(c => c.CoachId == id);
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (coach == null)
             {
@@ -58,7 +58,7 @@ namespace Anyone4Tennis.Controllers
 
             var coachViewModel = new CoachViewModel
             {
-                CoachId = coach.CoachId,
+                CoachId = coach.Id,
                 FirstName = coach.FirstName,
                 LastName = coach.LastName,
                 Biography = coach.Biography,
