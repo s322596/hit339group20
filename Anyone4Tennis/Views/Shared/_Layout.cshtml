@@ -17,7 +17,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <div class="navbar-nav text-uppercase me-auto py-4 py-lg-0">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -36,7 +36,7 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Coach" asp-action="List">Coaches</a>
                                 </li>
                             }
-                            @if (User.IsInRole("Admin") || User.IsInRole("Coach"))
+                            @if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="List">Member List</a>
@@ -50,14 +50,16 @@
                             }
                             @if (User.IsInRole("Member"))
                             {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Member" asp-action="MyEnrollments">My Enrollments</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Member" asp-action="MyEnrollments">My Enrollments</a>
+                                </li>
                             }
                         }
                     </ul>
-                    <partial name="_LoginPartial" />
+                    
                 </div>
+                <partial name="_LoginPartial" />
+
             </div>
         </nav>
     </header>

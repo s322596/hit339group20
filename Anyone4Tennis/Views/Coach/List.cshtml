@@ -3,42 +3,33 @@
 @{
     ViewData["Title"] = "Available Coaches";
 }
+<!-- Include Bootstrap CSS in your head section -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
 <h1>Available Coaches</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Photo</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Details</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var coach in Model)
-        {
-            <tr>
-                <td>
+<div class="row">
+    @foreach (var coach in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
                     @if (coach.Photo != null)
                     {
                         <!-- Convert byte[] to Base64 string to display the image -->
                         <img src="data:image/jpeg;base64,@Convert.ToBase64String(coach.Photo)"
                              alt="Photo of @coach.FirstName @coach.LastName"
-                             width="100" />
+                             class="card-img-top" style="max-width: 100px; max-height: 100px; object-fit: cover;" />
                     }
                     else
                     {
                         <span>No Photo</span>
                     }
-                </td>
-                <td>@coach.FirstName</td>
-                <td>@coach.LastName</td>
-                <td>
-                    <!-- Link to the CoachDetails action with the coach's ID -->
-                    <a href="@Url.Action("Details", "Coach", new { id = coach.CoachId })">View Details</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+                    <h5 class="card-title mt-3">@coach.FirstName @coach.LastName</h5>
+                    <a href="@Url.Action("Details", "Coach", new { id = coach.CoachId })" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
