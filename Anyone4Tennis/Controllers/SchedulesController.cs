@@ -2,6 +2,7 @@
 using Anyone4Tennis.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
@@ -115,15 +116,17 @@ public class SchedulesController : Controller
         return View(allSchedules);
     }
 
-
-
     [Authorize]
     [HttpPost]
-    public async Task<IActionResult> Enroll(int scheduleId)
+    public async Task<IActionResult> Enroll(int scheduleId, [FromServices] IEmailSender emailSender)
     {
         var memberId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var member = await _context.Users.FindAsync(memberId);
-        var schedule = await _context.Schedules.FindAsync(scheduleId);
+
+        // Fetch the schedule and include the coach details
+        var schedule = await _context.Schedules
+            .Include(s => s.Coach) // Include the Coach entity to access the coach's details
+            .FirstOrDefaultAsync(s => s.SchedulesID == scheduleId);
 
         // Log member and schedule for debugging
         if (member == null)
@@ -148,7 +151,26 @@ public class SchedulesController : Controller
         _context.MemberSchedules.Add(memberSchedule);
         await _context.SaveChangesAsync();
 
-        return RedirectToAction("ScheduleList"); // Or another action
+        // Prepare email content, including coach information
+        var subject = "Schedule Enrollment Confirmation";
+        var message = $@"
+        <h1>Schedule Enrollment Confirmation</h1>
+        <p>Dear {member.UserName},</p>
+        <p>You have successfully enrolled in the following schedule:</p>
+        <ul>
+            <li><strong>Title:</strong> {schedule.Title}</li>
+            <li><strong>Location:</strong> {schedule.Location}</li>
+            <li><strong>Start Time:</strong> {schedule.StartTime.ToString("g")}</li>
+            <li><strong>End Time:</strong> {schedule.EndTime.ToString("g")}</li>
+            <li><strong>Coach:</strong> {schedule.Coach.FirstName} {schedule.Coach.LastName}</li>
+        </ul>
+        <p>Thank you for enrolling!</p>
+    ";
+
+        // Send the email to the user
+        await emailSender.SendEmailAsync(member.Email, subject, message);
+
+        return RedirectToAction("ScheduleList"); // Redirect after enrollment
     }
 
     public async Task<IActionResult> Members(int id)
