@@ -23,12 +23,24 @@ namespace Anyone4Tennis.Controllers
             _context = context;
             _emailSender = emailSender;
         }
+
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string searchString)
         {
-            var members = await _context.Users
-                .OfType<Member>()
-                .ToListAsync();
+            // Start with the queryable collection of members
+            IQueryable<Member> membersQuery = _context.Users.OfType<Member>();
+
+            // Apply search filtering if searchString is provided
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                membersQuery = membersQuery.Where(m =>
+                    m.FirstName.Contains(searchString) ||   // Search by First Name
+                    m.LastName.Contains(searchString) ||    // Search by Last Name
+                    m.Email.Contains(searchString));         // Search by Email
+            }
+
+            // Execute the query and get the list of members
+            var members = await membersQuery.ToListAsync();
 
             var memberViewModels = new List<MemberViewModel>();
 

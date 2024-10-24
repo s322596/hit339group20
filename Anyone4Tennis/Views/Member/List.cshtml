@@ -1,6 +1,13 @@
 ﻿@model IEnumerable<Anyone4Tennis.Models.ViewModels.MemberViewModel>
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
+<h1>Member List</h1>
+
+<form method="get" asp-action="List">
+    <input type="text" name="searchString" placeholder="Search by name or email..." />
+    <button type="submit">Search</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>
