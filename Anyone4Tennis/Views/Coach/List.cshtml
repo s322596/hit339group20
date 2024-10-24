@@ -5,6 +5,7 @@
 }
 <!-- Include Bootstrap CSS in your head section -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
 <h1>Available Coaches</h1>
 
@@ -27,7 +28,7 @@
                     }
 
                     <h5 class="card-title mt-3">@coach.FirstName @coach.LastName</h5>
-                    <a href="@Url.Action("Details", "Coach", new { id = coach.CoachId })" class="btn btn-primary">View Details</a>
+                    <a href="@Url.Action("Details", "Coach", new { id = coach.CoachId })" class="btn btn-primary custom-btn">View Details</a>
                 </div>
             </div>
         </div>

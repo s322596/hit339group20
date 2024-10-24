@@ -122,3 +122,16 @@ body {
     .btn-inactive:hover {
         background-color: #c82333; /* Darker red on hover */
     }
+.custom-btn {
+    background-color: #F68161; /* Set the background to orange */
+    border: none; /* Remove border */
+    color: white; /* Set the text color to white for better contrast */
+    padding: 10px 20px; /* Add some padding */
+    font-size: 16px; /* Set the font size */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+    .custom-btn:hover {
+        background-color: #e5674d; /* Optional: Darker shade on hover */
+    }
