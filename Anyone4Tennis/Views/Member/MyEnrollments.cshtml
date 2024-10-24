@@ -30,7 +30,7 @@
                     <td>@enrollment.CoachName</td>
                     <td>
                         <!-- Unenroll button -->
-                        <form asp-action="Unenroll" method="post">
+                        <form asp-action="Unenroll" method="post" class="unenroll-form">
                             <input type="hidden" name="scheduleId" value="@enrollment.MemberScheduleId" />
                             <button type="submit" class="btn btn-danger">Unenroll</button>
                         </form>
@@ -61,8 +61,8 @@ else
 
 <!-- Confirmation prompt for unenrolling -->
 <script>
-    document.querySelectorAll("form").forEach(form => {
-        form.addEventListener("submit", function(event) {
+    document.querySelectorAll(".unenroll-form").forEach(form => {
+        form.addEventListener("submit", function (event) {
             if (!confirm("Are you sure you want to unenroll from this schedule?")) {
                 event.preventDefault(); // Prevent form submission if user cancels
             }
