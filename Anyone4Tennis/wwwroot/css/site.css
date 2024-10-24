@@ -93,3 +93,32 @@ body {
         text-align: center;
     }
 }
+/* Button for active members (green) */
+.btn-active {
+    background-color: #28a745; /* Green */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-active:hover {
+        background-color: #218838; /* Darker green on hover */
+    }
+
+/* Button for inactive members (red) */
+.btn-inactive {
+    background-color: #dc3545; /* Red */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-inactive:hover {
+        background-color: #c82333; /* Darker red on hover */
+    }

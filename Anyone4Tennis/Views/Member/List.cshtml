@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Anyone4Tennis.Models.ViewModels.MemberViewModel>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
 <table class="table">
     <thead>
@@ -22,7 +23,7 @@
                     <form asp-action="UpdateMemberStatus" method="post">
                         <input type="hidden" name="MemberId" value="@member.MemberId" />
                         <input type="hidden" name="Active" value="@(member.Active ? "false" : "true")" />
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn @(member.Active ?  "btn-inactive": "btn-active")">
                             @(member.Active ? "Deactivate" : "Activate")
                         </button>
                     </form>
