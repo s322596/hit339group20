@@ -82,6 +82,10 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account.Manage
             if (user is Coach coach)
             {
                 Input.Biography = coach.Biography; // Load Biography property
+                if (coach.Photo != null)
+                {
+                    Input.Photo = new FormFile(new MemoryStream(coach.Photo), 0, coach.Photo.Length, "Photo", "photo.png");
+                }
             }
         }
 
@@ -130,6 +134,16 @@ namespace Anyone4Tennis.Areas.Identity.Pages.Account.Manage
             if (user is Coach coach)
             {
                 coach.Biography = Input.Biography;
+
+                // Handle photo upload
+                if (Input.Photo != null && Input.Photo.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await Input.Photo.CopyToAsync(memoryStream);
+                        coach.Photo = memoryStream.ToArray(); // Convert the uploaded file to byte[]
+                    }
+                }
             }
 
             // Update user

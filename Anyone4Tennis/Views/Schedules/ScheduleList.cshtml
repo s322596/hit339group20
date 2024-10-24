@@ -47,7 +47,7 @@
                 <td>@item.Coach.FirstName @item.Coach.LastName</td>
 
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.SchedulesID" class="btn btn-primary">View Details</a>
+                    <a asp-action="Details" asp-route-id="@item.SchedulesID" class="btn btn-primary">Details</a>
                 </td>
 
                 @if (User.IsInRole("Member"))
@@ -65,7 +65,7 @@
                     <td>
                         <form asp-action="Members" asp-controller="Schedules" method="post">
                             <input type="hidden" name="id" value="@item.SchedulesID" />
-                            <button type="submit" class="btn btn-primary">View Enrolled Members</button>
+                            <button type="submit" class="btn btn-primary">Enrolled Members</button>
                         </form>
                     </td>
                 }
