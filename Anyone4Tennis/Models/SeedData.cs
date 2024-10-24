@@ -27,26 +27,26 @@ namespace Anyone4Tennis.Data
             await EnsureAdminExists(userManager, "admin@anyone4tennis.com", "Admin@123", "Admin", "Admin", "User");
 
             // Add coaches
-            await EnsureCoachExists(userManager, "jane.johnson1@anyone4tennis.com", "Password123!", "Coach", "Jane", "Johnson", "/images/coaches/alex.jpg", env.WebRootPath, 1);
-            await EnsureCoachExists(userManager, "emily.smith1@anyone4tennis.com", "Password123!", "Coach", "Emily", "Smith", "/images/coaches/bowser.jpg", env.WebRootPath, 2);
-            await EnsureCoachExists(userManager, "emily.wilson1@anyone4tennis.com", "Password123!", "Coach", "Emily", "Wilson", "/images/coaches/DK.jpg", env.WebRootPath, 3);
-            await EnsureCoachExists(userManager, "emily.williams1@anyone4tennis.com", "Password123!", "Coach", "Emily", "Williams", "/images/coaches/falco.jpg", env.WebRootPath, 4);
-            await EnsureCoachExists(userManager, "michael.smith1@anyone4tennis.com", "Password123!", "Coach", "Michael", "Smith", "/images/coaches/falcon.jpg", env.WebRootPath, 5);
-            await EnsureCoachExists(userManager, "laura.miller@anyone4tennis.com", "Password123!", "Coach", "Laura", "Miller", "/images/coaches/fox.jpg", env.WebRootPath, 6);
-            await EnsureCoachExists(userManager, "emily.wilson2@anyone4tennis.com", "Password123!", "Coach", "Emily", "Wilson", "/images/coaches/Jigglypuff.png", env.WebRootPath, 7);
-            await EnsureCoachExists(userManager, "daniel.johnson1@anyone4tennis.com", "Password123!", "Coach", "Daniel", "Johnson", "/images/coaches/kirby.jpg", env.WebRootPath, 8);
-            await EnsureCoachExists(userManager, "daniel.williams1@anyone4tennis.com", "Password123!", "Coach", "Daniel", "Williams", "/images/coaches/link.jpg", env.WebRootPath, 9);
-            await EnsureCoachExists(userManager, "jane.davis1@anyone4tennis.com", "Password123!", "Coach", "Jane", "Davis", "/images/coaches/lucina.jpg", env.WebRootPath, 10);
-            await EnsureCoachExists(userManager, "robert.jones1@anyone4tennis.com", "Password123!", "Coach", "Robert", "Jones", "/images/coaches/luigi.jpg", env.WebRootPath, 11);
-            await EnsureCoachExists(userManager, "david.miller1@anyone4tennis.com", "Password123!", "Coach", "David", "Miller", "/images/coaches/mario.jpg", env.WebRootPath, 12);
-            await EnsureCoachExists(userManager, "jessica.williams1@anyone4tennis.com", "Password123!", "Coach", "Jessica", "Williams", "/images/coaches/mew2.jpg", env.WebRootPath, 13);
-            await EnsureCoachExists(userManager, "jane.johnson2@anyone4tennis.com", "Password123!", "Coach", "Jane", "Johnson", "/images/coaches/peach.png", env.WebRootPath, 14);
-            await EnsureCoachExists(userManager, "laura.wilson1@anyone4tennis.com", "Password123!", "Coach", "Laura", "Wilson", "/images/coaches/pikachu.jpg", env.WebRootPath, 15);
-            await EnsureCoachExists(userManager, "daniel.williams2@anyone4tennis.com", "Password123!", "Coach", "Daniel", "Williams", "/images/coaches/pichu.jpg", env.WebRootPath, 16);
-            await EnsureCoachExists(userManager, "sarah.miller1@anyone4tennis.com", "Password123!", "Coach", "Sarah", "Miller", "/images/coaches/charmander.png", env.WebRootPath, 17);
-            await EnsureCoachExists(userManager, "sarah.johnson1@anyone4tennis.com", "Password123!", "Coach", "Sarah", "Johnson", "/images/coaches/steve.png", env.WebRootPath, 18);
-            await EnsureCoachExists(userManager, "jessica.williams2@anyone4tennis.com", "Password123!", "Coach", "Jessica", "Williams", "/images/coaches/yoshi.png", env.WebRootPath, 19);
-            await EnsureCoachExists(userManager, "sarah.williams1@anyone4tennis.com", "Password123!", "Coach", "Sarah", "Williams", "/images/coaches/zelda.jpg", env.WebRootPath, 20);
+            await EnsureCoachExists(userManager, "jane.johnson1@anyone4tennis.com", "Password123!", "Coach", "Jane", "Johnson","Alex from minecraft", "/images/coaches/alex.jpg", env.WebRootPath, 1);
+            await EnsureCoachExists(userManager, "emily.smith1@anyone4tennis.com", "Password123!", "Coach", "Emily", "Smith", "Bowser (クッパ, Kuppa?) is the supreme leader of the Koopa Troop, King of the Koopas.", "/images/coaches/bowser.jpg", env.WebRootPath, 2);
+            await EnsureCoachExists(userManager, "emily.wilson1@anyone4tennis.com", "Password123!", "Coach", "Emily", "Wilson", "Donkey Kong is the heaviest and largest character in Super Smash Bros. ", "/images/coaches/DK.jpg", env.WebRootPath, 3);
+            await EnsureCoachExists(userManager, "emily.williams1@anyone4tennis.com", "Password123!", "Coach", "Emily", "Williams", "Falco (ファルコ Faruko?) is an unlockable character representing the Star Fox universe in Super Smash Bros. ", "/images/coaches/falco.jpg", env.WebRootPath, 4);
+            await EnsureCoachExists(userManager, "michael.smith1@anyone4tennis.com", "Password123!", "Coach", "Michael", "Smith", "Captain Falcon is a character who focuses on speed and power. His most notorious attributes are his incredible speed (the fastest dashing and falling speed) and combo ability.", "/images/coaches/falcon.jpg", env.WebRootPath, 5);
+            await EnsureCoachExists(userManager, "laura.miller@anyone4tennis.com", "Password123!", "Coach", "Laura", "Miller", "Fox is a character who is all about speed. He has the second fastest dashing speed (second only to Captain Falcon), third fastest air speed (behind Yoshi and Pikachu), the third fastest falling speed, a fast roll, and generally very fast attacks in terms of both startup and ending lag.", "/images/coaches/fox.jpg", env.WebRootPath, 6);
+            await EnsureCoachExists(userManager, "emily.wilson2@anyone4tennis.com", "Password123!", "Coach", "Emily", "Wilson", "Jigglypuff is a veteran fighter in Super Smash Bros. Ultimate, first playable in Super Smash Bros. ", "/images/coaches/Jigglypuff.png", env.WebRootPath, 7);
+            await EnsureCoachExists(userManager, "daniel.johnson1@anyone4tennis.com", "Password123!", "Coach", "Daniel", "Johnson", "Kirby is a small, light, and somewhat floaty character. He is relatively difficult to combo horizontally and offstage, though is vulnerable to juggling and many vertical KO techniques (as well as not being too hard to KO horizontally either). ", "/images/coaches/kirby.jpg", env.WebRootPath, 8);
+            await EnsureCoachExists(userManager, "daniel.williams1@anyone4tennis.com", "Password123!", "Coach", "Daniel", "Williams", " Link's attacks are slow, long-ranged, and powerful. This gives him good KOing ability, with his down aerial and forward smash being especially powerful finishers. ", "/images/coaches/link.jpg", env.WebRootPath, 9);
+            await EnsureCoachExists(userManager, "jane.davis1@anyone4tennis.com", "Password123!", "Coach", "Jane", "Davis", "Lucina is a princess of the kingdom of Ylisse, the successor state to the now-ancient kingdom of Archanea, and is Chrom's daughter.", "/images/coaches/lucina.jpg", env.WebRootPath, 10);
+            await EnsureCoachExists(userManager, "robert.jones1@anyone4tennis.com", "Password123!", "Coach", "Robert", "Jones", "Luigi (ルイージ, Ruīji) is a character in the Mario series. He is the younger brother of the more-famous Mario, but is still a prominent character (and second only to his older brother)", "/images/coaches/luigi.jpg", env.WebRootPath, 11);
+            await EnsureCoachExists(userManager, "david.miller1@anyone4tennis.com", "Password123!", "Coach", "David", "Miller", "Mario (マリオ) is a playable character in Super Smash Bros. Ultimate, representing the Super Mario franchise.", "/images/coaches/mario.jpg", env.WebRootPath, 12);
+            await EnsureCoachExists(userManager, "jessica.williams1@anyone4tennis.com", "Password123!", "Coach", "Jessica", "Williams", "Mewtwo (ミュウツー, Myūtsū?) is a fictional creature from the phenomenally popular and expansive Pokémon media franchise.", "/images/coaches/mew2.jpg", env.WebRootPath, 13);
+            await EnsureCoachExists(userManager, "jane.johnson2@anyone4tennis.com", "Password123!", "Coach", "Jane", "Johnson", "Peach (ピーチ, Pīchi) is a playable character in Super Smash Bros. for Nintendo 3DS/Wii U. ", "/images/coaches/peach.png", env.WebRootPath, 14);
+            await EnsureCoachExists(userManager, "laura.wilson1@anyone4tennis.com", "Password123!", "Coach", "Laura", "Wilson", "Pikachu is a small, very quick character with fast moves, a great recovery, great finishers, a projectile, disjointed hitboxes, great comboing and edge-guarding abilities, and an exceedingly powerful back throw.",  "/images/coaches/pikachu.jpg", env.WebRootPath, 15);
+            await EnsureCoachExists(userManager, "daniel.williams2@anyone4tennis.com", "Password123!", "Coach", "Daniel", "Williams", "Pichu (ピチュー, Pichu) is a playable character in Super Smash Bros. Ultimate. It was confirmed alongside Jigglypuff and the rest of the returning roster", "/images/coaches/pichu.jpg", env.WebRootPath, 16);
+            await EnsureCoachExists(userManager, "sarah.miller1@anyone4tennis.com", "Password123!", "Coach", "Sarah", "Miller", "Charmander is the basic Fire-type Starter Pokémon of Generation I, and is categorized within the Pokédex at #004 as the \"Lizard Pokémon\". ", "/images/coaches/charmander.png", env.WebRootPath, 17);
+            await EnsureCoachExists(userManager, "sarah.johnson1@anyone4tennis.com", "Password123!", "Coach", "Sarah", "Johnson", "Steve from minecraft", "/images/coaches/steve.png", env.WebRootPath, 18);
+            await EnsureCoachExists(userManager, "jessica.williams2@anyone4tennis.com", "Password123!", "Coach", "Jessica", "Williams", "Yoshi is a surprisingly heavy character (third heaviest character in Smash 64), yet is relatively quick, with the fastest air speed in the game, with a moderately fast dashing speed and fast walking speed to complement this.", "/images/coaches/yoshi.png", env.WebRootPath, 19);
+            await EnsureCoachExists(userManager, "sarah.williams1@anyone4tennis.com", "Password123!", "Coach", "Sarah", "Williams", "Zelda is primarily a zoning character, keeping her distance from opponents with powerful projectiles that can easily disrupt a match, and high-powered aerials that can be easily sweetspotted to land devastating blows.",  "/images/coaches/zelda.jpg", env.WebRootPath, 20);
 
             // Add first 100 members
             await EnsureMemberExists(userManager, "david.miller@anyone4tennis.com", "Password123!", "Member", "David", "Miller", true, 1);
@@ -509,7 +509,7 @@ namespace Anyone4Tennis.Data
             }
         }
 
-        private static async Task EnsureCoachExists(UserManager<ApplicationUser> userManager, string email, string password, string roleName, string firstName, string lastName, string photoPath, string webRootPath, int coachId)
+        private static async Task EnsureCoachExists(UserManager<ApplicationUser> userManager, string email, string password, string roleName, string firstName, string lastName, string biography, string photoPath, string webRootPath, int coachId)
         {
             // Check if the coach user already exists
             if (await userManager.FindByEmailAsync(email) == null)
@@ -522,6 +522,7 @@ namespace Anyone4Tennis.Data
                     EmailConfirmed = true,
                     FirstName = firstName,
                     LastName = lastName,
+                    Biography = biography,
                     Photo = await GetPhotoAsByteArray(photoPath, webRootPath), // Load the photo as a byte array
                     CoachId = coachId
                 };
