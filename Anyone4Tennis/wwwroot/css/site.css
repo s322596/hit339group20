@@ -22,3 +22,74 @@ body {
 }
 
 
+/* Scope all styles to the coach-details container */
+.coach-details h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #F68161;
+}
+
+.coach-details h4 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #F68161;
+}
+
+.coach-details hr {
+    border: none;
+    height: 2px;
+    background-color: #2980b9;
+    margin-bottom: 20px;
+}
+
+.coach-details dt {
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.coach-details dd {
+    margin-bottom: 20px;
+    color: black;
+    line-height: 1.6;
+}
+
+.coach-details img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.coach-details a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #F68161;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+    .coach-details a:hover {
+        background-color: #3498db;
+    }
+
+@media (max-width: 768px) {
+    .coach-details dt.col-sm-2,
+    .coach-details dd.col-sm-10 {
+        display: block;
+        width: 100%;
+    }
+
+    .coach-details img {
+        max-width: 100%;
+    }
+
+    .coach-details a {
+        width: 100%;
+        text-align: center;
+    }
+}
