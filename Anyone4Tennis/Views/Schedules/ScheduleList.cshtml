@@ -13,6 +13,14 @@
     <h1>Schedule List</h1>
 }
 
+<!-- Search Form -->
+<form asp-action="ScheduleList" method="get" class="form-inline">
+    <div class="form-group mb-2">
+        <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Search schedules..." />
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>

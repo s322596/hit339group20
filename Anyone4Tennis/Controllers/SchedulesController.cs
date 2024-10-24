@@ -75,45 +75,43 @@ public class SchedulesController : Controller
         return new JsonResult(coaches);
     }
 
-    public async Task<IActionResult> ScheduleList()
+    public async Task<IActionResult> ScheduleList(string searchString)
     {
         // Get the currently logged-in user
         var currentUser = await _userManager.GetUserAsync(User);
         var today = DateTime.Today;
 
-        if (currentUser is Coach) // Check if the logged-in user is a coach
-        {
-            // Filter the schedules by CoachId and include Coach details
-            var schedules = await _context.Schedules
-                .Include(s => s.Coach)  // Include the Coach entity to access coach details
-                .Where(s => s.Coach.Id == currentUser.Id && s.StartTime >= today)
-                .ToListAsync();
-            return View(schedules);
-        }
-
-        if (currentUser is Member) // Check if the logged-in user is a member
-        {
-            // Get the IDs of schedules the member is already enrolled in
-            var enrolledScheduleIds = await _context.MemberSchedules
-                .Where(ms => ms.MemberFK == currentUser.Id) // Assuming MemberFK stores the member's ID
-                .Select(ms => ms.ScheduleID) // Select the ScheduleID
-                .ToListAsync();
-
-            // Get all schedules except those the member is already enrolled in and include Coach details
-            var availableSchedules = await _context.Schedules
-                .Include(s => s.Coach)  // Include the Coach entity to access coach details
-                .Where(s => !enrolledScheduleIds.Contains(s.SchedulesID) && s.StartTime >= today) // Filter out enrolled schedules
-                .ToListAsync();
-
-            return View(availableSchedules);
-        }
-
-        // If no specific role is detected or no user is logged in, return all schedules and include Coach details
-        var allSchedules = await _context.Schedules
+        IQueryable<Schedules> schedulesQuery = _context.Schedules
             .Include(s => s.Coach)  // Include the Coach entity to access coach details
-            .Where(s => s.StartTime >= today)
-            .ToListAsync();
-        return View(allSchedules);
+            .Where(s => s.StartTime >= today);
+
+        // Apply search filtering if searchString is provided
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            schedulesQuery = schedulesQuery.Where(s =>
+                s.Title.Contains(searchString) ||               // Search by Title
+                s.Location.Contains(searchString) ||            // Search by Location
+                (s.Coach.FirstName.Contains(searchString) ||    // Search by Coach's First Name
+                 s.Coach.LastName.Contains(searchString)));      // Search by Coach's Last Name
+        }
+
+        if (currentUser is Coach)
+        {
+            schedulesQuery = schedulesQuery.Where(s => s.CoachId == currentUser.Id);
+        }
+
+        if (currentUser is Member)
+        {
+            var enrolledScheduleIds = await _context.MemberSchedules
+                .Where(ms => ms.MemberFK == currentUser.Id)
+                .Select(ms => ms.ScheduleID)
+                .ToListAsync();
+
+            schedulesQuery = schedulesQuery.Where(s => !enrolledScheduleIds.Contains(s.SchedulesID));
+        }
+
+        var schedules = await schedulesQuery.ToListAsync();
+        return View(schedules);
     }
 
     public async Task<IActionResult> Details(int? id)
