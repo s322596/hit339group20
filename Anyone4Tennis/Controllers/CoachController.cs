@@ -22,7 +22,6 @@ namespace Anyone4Tennis.Controllers
             _context = context;
             _emailSender = emailSender;
         }
-        [Authorize(Roles = "Admin,Member")]
         public async Task<IActionResult> List()
         {
             var coaches = await _context.Users
