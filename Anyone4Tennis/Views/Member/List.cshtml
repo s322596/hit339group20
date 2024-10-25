@@ -3,9 +3,12 @@
 
 <h1>Member List</h1>
 
-<form method="get" asp-action="List">
-    <input type="text" name="searchString" placeholder="Search by name or email..." />
-    <button type="submit">Search</button>
+<form method="get" asp-action="List" class="form-inline">
+    <div class="form-group mb-2">
+        <input type="text" name="searchString" class="form-control" placeholder="Search by name or email..." />
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+
 </form>
 
 <table class="table">

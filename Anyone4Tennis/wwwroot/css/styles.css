@@ -11012,3 +11012,7 @@ header.masthead h1, header.masthead .h1 {
 .footer-text {
     color: #6c757d;
 }
+.logo-image {
+    width: 200px;
+    height: 175px;
+}
