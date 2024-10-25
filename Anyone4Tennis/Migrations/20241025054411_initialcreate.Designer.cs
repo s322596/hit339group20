@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Anyone4Tennis.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241025033701_Initial")]
-    partial class Initial
+    [Migration("20241025054411_initialcreate")]
+    partial class initialcreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
